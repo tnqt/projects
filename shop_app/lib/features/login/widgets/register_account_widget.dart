@@ -1,5 +1,5 @@
-import 'package:coffee_restaurant/coffee_restaurant.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/shop_app.dart';
 
 class RegisterAccountWidget extends StatelessWidget {
   const RegisterAccountWidget({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class RegisterAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, RegisterPage.routeName);
+        // Navigator.pushNamed(context, RegisterPage.routeName);
       },
       child: RichText(
         text: const TextSpan(

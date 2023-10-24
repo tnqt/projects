@@ -1,6 +1,6 @@
-import 'package:coffee_restaurant/coffee_restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/shop_app.dart';
 
 class RememberMeWidget extends StatefulWidget {
   const RememberMeWidget({Key? key}) : super(key: key);

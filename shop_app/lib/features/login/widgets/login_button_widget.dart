@@ -1,6 +1,6 @@
-import 'package:coffee_restaurant/coffee_restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/shop_app.dart';
 
 class LoginButtonWidget extends StatelessWidget {
   const LoginButtonWidget({Key? key}) : super(key: key);
@@ -15,9 +15,9 @@ class LoginButtonWidget extends StatelessWidget {
               ),
               child: const Align(
                 alignment: Alignment.centerLeft,
-                child: CustomSpinkitCircle(
-                  height: 45,
-                ),
+                // child: CustomSpinkitCircle(
+                //   height: 45,
+                // ),
               ),
             )
           : GestureDetector(

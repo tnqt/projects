@@ -4,7 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import 'package:shop_app/features/login/login.dart';
+import 'package:shop_app/shop_app.dart';
 
 part 'login_event.dart';
 
