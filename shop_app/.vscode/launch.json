@@ -1,0 +1,90 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "TN store dev",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": [
+                "--flavor",
+                "development",
+                "-t",
+                "lib/main_development.dart"
+            ]
+        },
+        {
+            "name": "TN store staging",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "args": [
+                "--flavor",
+                "staging",
+                "-t",
+                "lib/main_staging.dart"
+            ]
+        },
+        {
+            "name": "TN store production",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "args": [
+                "--flavor",
+                "production",
+                "-t",
+                "lib/main_production.dart"
+            ]
+        },
+        {
+            "name": "TN store profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "TN store profiling dev",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "${workspaceFolder}/lib/main_development.dart",
+            "args": [
+                "-t",
+                "lib/main_development.dart",
+                "--flavor",
+                "development",
+                "--cache-sksl",
+            ]
+        },
+        {
+            "name": "TN store profiling Staging",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "${workspaceFolder}/lib/main_staging.dart",
+            "args": [
+                "-t",
+                "lib/main_staging.dart",
+                "--flavor",
+                "staging",
+            ]
+        },
+        {
+            "name": "TN store profiling Production",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "${workspaceFolder}/lib/main_production.dart",
+            "args": [
+                "-t",
+                "lib/main_production.dart",
+                "--flavor",
+                "production",
+            ]
+        }
+    ]
+}
