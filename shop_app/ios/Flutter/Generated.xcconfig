@@ -2,7 +2,7 @@
 FLUTTER_ROOT=/Users/thaonguyen/Application/flutter_3.10.5
 FLUTTER_APPLICATION_PATH=/Users/thaonguyen/Flutter/Learn/Git/projects/shop_app
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=/Users/thaonguyen/Flutter/Learn/Git/projects/shop_app/lib/main.dart
+FLUTTER_TARGET=/Users/thaonguyen/Flutter/Learn/Git/projects/shop_app/lib/main_development.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1

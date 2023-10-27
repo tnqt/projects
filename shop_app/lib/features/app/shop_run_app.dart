@@ -9,11 +9,14 @@ import 'package:shop_app/shop_app.dart';
 class ShopRunApp extends StatelessWidget {
   const ShopRunApp({
     Key? key,
+    required this.authenticationRepository,
+    required this.userRepository,
     required this.callback,
     required this.locale,
   }) : super(key: key);
 
-
+  final AuthenticationRepository authenticationRepository;
+  final UserRepository userRepository;
   final VoidCallback callback;
   final Locale locale;
 
@@ -23,9 +26,9 @@ class ShopRunApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        // RepositoryProvider.value(
-        //   value: authenticationRepository,
-        // ),
+        RepositoryProvider.value(
+          value: authenticationRepository,
+        ),
         // RepositoryProvider.value(
         //   value: userRepository,
         // ),
@@ -41,12 +44,12 @@ class ShopRunApp extends StatelessWidget {
           //     storageRepository: storageRepository,
           //   )..init(),
           // ),
-          // BlocProvider<AuthenticationBloc>(
-          //   create: (BuildContext context) => AuthenticationBloc(
-          //     authenticationRepository: authenticationRepository,
-          //     userRepository: userRepository,
-          //   ),
-          // ),
+          BlocProvider<AuthenticationBloc>(
+            create: (BuildContext context) => AuthenticationBloc(
+              authenticationRepository: authenticationRepository,
+              userRepository: userRepository,
+            ),
+          ),
           // BlocProvider<NotificationCubit>(
           //   create: (BuildContext context) => NotificationCubit(),
           // ),
@@ -115,13 +118,13 @@ class ShopAppViewState extends State<ShopAppView> {
       builder: (context, child) {
         return MultiBlocListener(
           listeners: [
-            // BlocListener<AuthenticationBloc, AuthenticationState>(
-            //   listener: (context, state) => authHandler(
-            //     ShopRunApp.navigatorKey.currentContext!,
-            //     state.status,
-            //     state.user,
-            //   ),
-            // ),
+            BlocListener<AuthenticationBloc, AuthenticationState>(
+              listener: (context, state) => authHandler(
+                ShopRunApp.navigatorKey.currentContext!,
+                state.status,
+                state.user,
+              ),
+            ),
           ],
           child: child ?? Container(),
         );

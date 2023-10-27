@@ -39,8 +39,8 @@ void bootstrap(
     Locale locale = Locale(phoneLanguage);
 
     runApp(ShopRunApp(
-      // authenticationRepository: AuthenticationRepository(),
-      // userRepository: UserRepository(),
+      authenticationRepository: AuthenticationRepository(),
+      userRepository: UserRepository(),
       // storageRepository: storageRepository,
       locale: locale,
       callback: () async {
