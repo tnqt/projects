@@ -8,7 +8,9 @@ class Util {
   static Future<RememberMeModel> getRememberMeModel() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      final loginInfo = json.decode(prefs.getString(Constant.rememberMeInfoLogin) ?? "");
+      String data = prefs.getString(Constant.rememberMeInfoLogin) ?? "";
+      if (data.isEmpty) return RememberMeModel.empty;
+      final loginInfo = json.decode(data);
       RememberMeModel rememberMeModel = loginInfo.isEmpty ? RememberMeModel.empty : RememberMeModel.fromJson(loginInfo);
       return rememberMeModel;
     } catch(err) {

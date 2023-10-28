@@ -49,7 +49,7 @@ class WaitingResourceScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/logo.png'),
+                  image: AssetImage('assets/icons/shop_logo.png'),
                 ),
               ),
             ),

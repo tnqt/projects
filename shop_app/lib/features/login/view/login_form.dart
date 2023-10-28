@@ -89,7 +89,7 @@ class AppLogoWidget extends StatelessWidget {
             height: 30,
             child: AspectRatio(
               aspectRatio: 1 / 1,
-              child: Image.asset('assets/images/logo.png'),
+              child: Image.asset('assets/icons/shop_logo.png'),
             ),
           ),
           const SizedBox(width: 5.0),

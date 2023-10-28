@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/config/firebase_options.dart';
@@ -16,9 +15,9 @@ Future<void> main() async {
   // final firebaseStorageApi = FirebaseStorageApi();
 
   bootstrap(
-    // localStorageStoreApi: localStorageApi,
-    // firebaseStorageApi: firebaseStorageApi,
-  );
+      // localStorageStoreApi: localStorageApi,
+      // firebaseStorageApi: firebaseStorageApi,
+      );
 }
 
 Future<void> _firebaseConfiguration() async {
