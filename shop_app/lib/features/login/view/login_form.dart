@@ -27,20 +27,19 @@ class LoginForm extends StatelessWidget {
                 children: [
                   const AppLogoWidget(),
                   const LoginInstructionWidget(),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.045),
-                  // CustomEmailInputWidget(
-                  //   onChangeCallBack: (email) {
-                  //     context.read<LoginBloc>().add(LoginEmailChanged(email));
-                  //   },
-                  // ),
-                  // CustomPasswordInputWidget(
-                  //   onChangeCallBack: (password) {
-                  //     context
-                  //         .read<LoginBloc>()
-                  //         .add(LoginPasswordChanged(password));
-                  //   },
-                  // ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.045),
+                  CustomPhoneNumberInputWidget(
+                    onChangeCallBack: (phoneNumber) {
+                      // context.read<LoginBloc>().add(LoginEmailChanged(email));
+                    },
+                  ),
+                  CustomPasswordInputWidget(
+                    onChangeCallBack: (password) {
+                      // context
+                      //     .read<LoginBloc>()
+                      //     .add(LoginPasswordChanged(password));
+                    },
+                  ),
                   const RememberMeWidget(),
                   const LoginButtonWidget(),
                   const ForgotPasswordWidget(),
@@ -86,7 +85,7 @@ class AppLogoWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: 30,
+            height: 100,
             child: AspectRatio(
               aspectRatio: 1 / 1,
               child: Image.asset('assets/icons/shop_logo.png'),
@@ -95,7 +94,7 @@ class AppLogoWidget extends StatelessWidget {
           const SizedBox(width: 5.0),
           const Text(
             'Thao Nguyen',
-            style: CustomTextStyle.textStyle16BlackW700,
+            style: CustomTextStyle.textStyle24BlackW700,
           ),
         ],
       ),
@@ -121,7 +120,7 @@ class LoginInstructionWidget extends StatelessWidget {
           ),
           SizedBox(height: Dimensions.paddingDefault),
           Text(
-            'login msg',
+            'Enter your phone number and password to access \n your account or create an account',
             style: CustomTextStyle.textStyle16Grey600W400,
             textAlign: TextAlign.center,
           ),

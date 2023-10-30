@@ -86,6 +86,13 @@ mixin CustomTextStyle {
     color: Colors.black,
   );
 
+  static const textStyle24BlackW700 = TextStyle(
+    fontFamily: Constant.appFontFamily,
+    fontWeight: FontWeight.w700,
+    fontSize: 24,
+    color: Colors.black,
+  );
+
   static const textStyle18BlackW800 = TextStyle(
     fontFamily: Constant.appFontFamily,
     fontWeight: FontWeight.w800,

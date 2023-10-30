@@ -47,18 +47,19 @@ class RegisterBodyPage extends StatelessWidget {
               //   },
               //   isRegister: true,
               // ),
-              // CustomPhoneInputWidget(
-              //   onChangeCallBack: (phoneNumber) {
-              //     context
-              //         .read<RegisterBloc>()
-              //         .add(RegisterPhoneChanged(phoneNumber));
-              //   },
-              // ),
+              CustomPhoneNumberInputWidget(
+                onChangeCallBack: (phoneNumber) {
+                  // context
+                  //     .read<RegisterBloc>()
+                  //     .add(RegisterPhoneChanged(phoneNumber));
+                  context.read<RegisterBloc>().add(RegisterPhoneChanged(phoneNumber));
+                },
+              ),
               // CustomPasswordInputWidget(
               //   onChangeCallBack: (password) {
-              //     context
-              //         .read<RegisterBloc>()
-              //         .add(RegisterPasswordChanged(password));
+              //     // context
+              //     //     .read<RegisterBloc>()
+              //     //     .add(RegisterPasswordChanged(password));
               //   },
               //   isRegister: true,
               // ),
@@ -104,15 +105,15 @@ class RegisterBodyPage extends StatelessWidget {
       padding: const EdgeInsets.all(
         Dimensions.paddingMedium,
       ),
-      child: Column(
-        children: const [
+      child: const Column(
+        children: [
           Text(
             'Create An Account',
             style: CustomTextStyle.textStyle18BlackW800,
           ),
           SizedBox(height: Dimensions.paddingDefault),
           Text(
-            'Register with your own active email and new \n password or login your account',
+            'Register with your active phone number \n or login your account',
             style: CustomTextStyle.textStyle16Grey600W400,
             textAlign: TextAlign.center,
           ),

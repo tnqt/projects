@@ -134,6 +134,51 @@ class AuthenticationRepository {
     }
   }
 
+  Future<void> phoneNumberRegisterRequest(String phoneNumber) async {
+    try {
+      //   UserCredential userCredential =
+      //       await auth.createUserWithEmailAndPassword(email: phoneNumber, password: pwd);
+
+      //   // final prefs = await SharedPreferences.getInstance();
+      //   if (userCredential.user != null) {
+      //     // await prefs.setBool(Constant.SESSION_IS_VALID, true);
+      //     _controller.add(AuthenticationStatus.registered);
+      //   } else {
+      //     _controller.add(AuthenticationStatus.unknown);
+      //   }
+      // } on FirebaseAuthException catch (e) {
+      //   if (e.code == 'weak-password') {
+      //     _controller.add(AuthenticationStatus.passwordIsWeak);
+      //     FirebaseLogger()
+      //         .log('mail_register_request', 'The password provided is too weak.');
+      //   } else if (e.code == 'email-already-in-use') {
+      //     _controller.add(AuthenticationStatus.accountAlreadyRegister);
+      //     FirebaseLogger().log('mail_register_request',
+      //         'The account already exists for that email.');
+      //   }
+      await auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) {
+          FirebaseLogger().log('verification_completed', "credential: ${credential.toString()}");
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          FirebaseLogger().log('verification_failed', "error: ${e.toString()}");
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          FirebaseLogger().log('code_sent',
+              "verificationId: ${verificationId.toString()} - resendToken: $resendToken");
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          FirebaseLogger().log('code_auto_retrieval_timeout',
+              "verificationId: ${verificationId.toString()}");
+        },
+      );
+    } catch (e) {
+      FirebaseLogger().log(
+          'phone_number_register_request', "register_error: ${e.toString()}");
+    }
+  }
+
   Future<bool> forgotPasswordRequest(String mail) async {
     try {
       await auth.sendPasswordResetEmail(email: mail);

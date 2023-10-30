@@ -20,6 +20,8 @@ void bootstrap() {
       Platform.localeName.split('_')[0] == "vi" ? "vi" : "en";
   Locale locale = Locale(phoneLanguage);
 
+  FCMService().registerFCM();
+
   runApp(ShopRunApp(
     authenticationRepository: AuthenticationRepository(),
     userRepository: UserRepository(),

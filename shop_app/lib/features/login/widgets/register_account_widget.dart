@@ -8,7 +8,7 @@ class RegisterAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        // Navigator.pushNamed(context, RegisterPage.routeName);
+        Navigator.pushNamed(context, RegisterPage.routeName);
       },
       child: RichText(
         text: const TextSpan(

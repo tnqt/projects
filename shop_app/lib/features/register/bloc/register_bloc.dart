@@ -28,11 +28,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     final email = Email.dirty(value: event.email);
     emit(state.copyWith(
         status: Formz.validate([
-          email,
-          state.username,
-          state.phoneNumber,
-          state.password,
-        ])));
+      email,
+      state.username,
+      state.phoneNumber,
+      state.password,
+    ])));
   }
 
   void _onUsernameChanged(
@@ -43,8 +43,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emit(
       state.copyWith(
         username: username,
-        status: Formz.validate(
-            [state.password, username, state.phoneNumber]),
+        status: Formz.validate([state.password, username, state.phoneNumber]),
       ),
     );
   }
@@ -56,8 +55,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     final phoneNumber = PhoneNumber.dirty(value: event.phone);
     emit(state.copyWith(
         phoneNumber: phoneNumber,
-        status: Formz.validate(
-            [state.username, phoneNumber, state.password])));
+        // status: Formz.validate(
+        //     [state.username, phoneNumber, state.password])));
+        status: Formz.validate([phoneNumber])));
   }
 
   void _onPasswordChanged(
@@ -69,8 +69,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emit(
       state.copyWith(
         password: password,
-        status: Formz.validate(
-            [state.username, state.phoneNumber, password]),
+        status: Formz.validate([state.username, state.phoneNumber, password]),
       ),
     );
   }
@@ -79,15 +78,15 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     RegisterSubmitted event,
     Emitter<RegisterState> emit,
   ) async {
-    
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
-        // await _authenticationRepository.mailRegisterRequest(
-        //     state.email.value, state.password.value);
+        await _authenticationRepository
+            .phoneNumberRegisterRequest(state.phoneNumber.value);
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
       } catch (e) {
-        FirebaseLogger().log('register_bloc',"submitted_register: ${e.toString()}");
+        FirebaseLogger()
+            .log('register_bloc', "submitted_register: ${e.toString()}");
         emit(state.copyWith(status: FormzStatus.submissionFailure));
       }
     }

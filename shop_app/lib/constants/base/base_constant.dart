@@ -7,4 +7,5 @@ class Constant {
   // Share preference key
   static const sessionIsValid = 'SESSION_IS_VALID';
   static const rememberMeInfoLogin = 'STORE_REMEMBER_ME';
+  static const isRegisteredFcm = 'IS_REGISTERED_FCM';
 }
