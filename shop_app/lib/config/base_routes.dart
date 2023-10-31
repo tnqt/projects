@@ -8,5 +8,6 @@ final routes = <String, WidgetBuilder>{
 
   LoginPage.routeName: (_) => const LoginPage(),
   RegisterPage.routeName: (_) => const RegisterPage(),
+  RegisterVerificationOtpPage.routeName:(_) => const RegisterVerificationOtpPage(),
 
 };

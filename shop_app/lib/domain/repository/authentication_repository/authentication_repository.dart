@@ -136,26 +136,6 @@ class AuthenticationRepository {
 
   Future<void> phoneNumberRegisterRequest(String phoneNumber) async {
     try {
-      //   UserCredential userCredential =
-      //       await auth.createUserWithEmailAndPassword(email: phoneNumber, password: pwd);
-
-      //   // final prefs = await SharedPreferences.getInstance();
-      //   if (userCredential.user != null) {
-      //     // await prefs.setBool(Constant.SESSION_IS_VALID, true);
-      //     _controller.add(AuthenticationStatus.registered);
-      //   } else {
-      //     _controller.add(AuthenticationStatus.unknown);
-      //   }
-      // } on FirebaseAuthException catch (e) {
-      //   if (e.code == 'weak-password') {
-      //     _controller.add(AuthenticationStatus.passwordIsWeak);
-      //     FirebaseLogger()
-      //         .log('mail_register_request', 'The password provided is too weak.');
-      //   } else if (e.code == 'email-already-in-use') {
-      //     _controller.add(AuthenticationStatus.accountAlreadyRegister);
-      //     FirebaseLogger().log('mail_register_request',
-      //         'The account already exists for that email.');
-      //   }
       await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (PhoneAuthCredential credential) {

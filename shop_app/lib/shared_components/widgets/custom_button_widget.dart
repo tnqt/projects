@@ -11,7 +11,7 @@ class CustomButtonWidget {
       case ButtonType.primaryButton:
         return ButtonTheme(
           child: ElevatedButton(
-            onPressed: onPress(),
+            onPressed: () => onPress.call(),
             child: Text(
               btnText.isEmpty ? 'Đồng ý' : btnText,
               textAlign: TextAlign.center,
@@ -22,7 +22,7 @@ class CustomButtonWidget {
       case ButtonType.secondaryButton:
         return ButtonTheme(
           child: ElevatedButton(
-            onPressed: onPress(),
+            onPressed:  () => onPress.call(),
             child: Text(
               btnText.isEmpty ? 'Huỷ' : btnText,
               textAlign: TextAlign.center,

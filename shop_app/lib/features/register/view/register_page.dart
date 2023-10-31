@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/shop_app.dart';
 
 class RegisterPage extends StatelessWidget {
-  static const routeName = 'login/register_page';
+  static const routeName = 'register/register_page';
 
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -31,7 +31,7 @@ class RegisterBodyPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _appLogo(),
+              const AppLogoWidget(),
               _registerInstruction(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.045),
               // CustomUserNameInputWidget(
@@ -52,7 +52,9 @@ class RegisterBodyPage extends StatelessWidget {
                   // context
                   //     .read<RegisterBloc>()
                   //     .add(RegisterPhoneChanged(phoneNumber));
-                  context.read<RegisterBloc>().add(RegisterPhoneChanged(phoneNumber));
+                  context
+                      .read<RegisterBloc>()
+                      .add(RegisterPhoneChanged(phoneNumber));
                 },
               ),
               // CustomPasswordInputWidget(
@@ -65,37 +67,18 @@ class RegisterBodyPage extends StatelessWidget {
               // ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               const RegisterButtonWidget(),
+              CustomButtonWidget.buildRaisedButton(
+                  btnText: "Register",
+                  onPress: () {
+                    context.read<RegisterBloc>().add(const RegisterSubmitted());
+                    Navigator.pushNamed(
+                        context, RegisterVerificationOtpPage.routeName);
+                  }),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               const AlreadyHaveAnAccountWidget(),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _appLogo() {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(
-        Dimensions.paddingDefault,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 30,
-            child: AspectRatio(
-              aspectRatio: 1 / 1,
-              child: Image.asset('assets/icons/shop_logo.png'),
-            ),
-          ),
-          const SizedBox(width: 5.0),
-          const Text(
-            'Thao Nguyen',
-            style: CustomTextStyle.textStyle16BlackW700,
-          ),
-        ],
       ),
     );
   }
