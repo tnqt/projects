@@ -34,46 +34,29 @@ class RegisterBodyPage extends StatelessWidget {
               const AppLogoWidget(),
               _registerInstruction(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.045),
-              // CustomUserNameInputWidget(
-              //   onChangeCallBack: (userName) {
-              //     context
-              //         .read<RegisterBloc>()
-              //         .add(RegisterUsernameChanged(userName));
-              //   },
-              // ),
-              // CustomEmailInputWidget(
-              //   onChangeCallBack: (email) {
-              //     context.read<RegisterBloc>().add(RegisterEmailChanged(email));
-              //   },
-              //   isRegister: true,
-              // ),
               CustomPhoneNumberInputWidget(
                 onChangeCallBack: (phoneNumber) {
-                  // context
-                  //     .read<RegisterBloc>()
-                  //     .add(RegisterPhoneChanged(phoneNumber));
                   context
                       .read<RegisterBloc>()
                       .add(RegisterPhoneChanged(phoneNumber));
                 },
               ),
-              // CustomPasswordInputWidget(
-              //   onChangeCallBack: (password) {
-              //     // context
-              //     //     .read<RegisterBloc>()
-              //     //     .add(RegisterPasswordChanged(password));
-              //   },
-              //   isRegister: true,
-              // ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              const RegisterButtonWidget(),
-              CustomButtonWidget.buildRaisedButton(
-                  btnText: "Register",
+              CustomButtonWidget.buildLargeButton(
                   onPress: () {
-                    context.read<RegisterBloc>().add(const RegisterSubmitted());
+                    // context.read<RegisterBloc>().add(const RegisterSubmitted());
                     Navigator.pushNamed(
                         context, RegisterVerificationOtpPage.routeName);
-                  }),
+                  },
+                  btnText: "Register"),
+              // const RegisterButtonWidget(),
+              // CustomButtonWidget.buildRaisedButton(
+              //     btnText: "Register",
+              //     onPress: () {
+              //       context.read<RegisterBloc>().add(const RegisterSubmitted());
+              //       Navigator.pushNamed(
+              //           context, RegisterVerificationOtpPage.routeName);
+              //     }),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               const AlreadyHaveAnAccountWidget(),
             ],

@@ -22,7 +22,7 @@ class CustomButtonWidget {
       case ButtonType.secondaryButton:
         return ButtonTheme(
           child: ElevatedButton(
-            onPressed:  () => onPress.call(),
+            onPressed: () => onPress.call(),
             child: Text(
               btnText.isEmpty ? 'Huỷ' : btnText,
               textAlign: TextAlign.center,
@@ -53,6 +53,33 @@ class CustomButtonWidget {
           btnText,
           style: textStyle,
           textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
+  static Widget buildLargeButton({
+    required Function onPress,
+    String btnText = '',
+  }) {
+    return GestureDetector(
+      onTap: () {
+        onPress.call();
+      },
+      behavior: HitTestBehavior.translucent,
+      child: Container(
+        height: 56,
+        margin: const EdgeInsets.all(
+          Dimensions.paddingDefault,
+        ),
+        decoration: BoxDecoration(
+          color: const Color(0xFF66BB6A),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          btnText,
+          style: CustomTextStyle.textStyle16WhiteW500,
         ),
       ),
     );

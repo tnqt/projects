@@ -22,6 +22,12 @@ class _RegisterVerificationOtpPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBarWidget(
+        title: '',
+        height: MediaQuery.of(context).size.height > 812 ? 31 : 58,
+        backgroundColor: const Color(0xFFF6F6F6),
+        leadingColor: Colors.grey,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -116,13 +122,17 @@ class _RegisterVerificationOtpPageState
               },
             ),
           ),
-          CustomButtonWidget.buildRaisedButton(
-              btnText: "Continue",
-              onPress: () {
-                // context.read<RegisterBloc>().add(const RegisterSubmitted());
-                // Navigator.pushNamed(
-                //     context, RegisterVerificationOtpPage.routeName);
-              }),
+          // CustomButtonWidget.buildRaisedButton(
+          //     btnText: "Continue",
+          //     onPress: () {
+          //       // context.read<RegisterBloc>().add(const RegisterSubmitted());
+          //       // Navigator.pushNamed(
+          //       //     context, RegisterVerificationOtpPage.routeName);
+          //     }),
+          CustomButtonWidget.buildLargeButton(
+            btnText: "Continue",
+            onPress: () {},
+          ),
         ],
       ),
     );
