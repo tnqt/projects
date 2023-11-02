@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:shop_app/shop_app.dart';
+import 'package:tuple/tuple.dart';
 
 part 'register_event.dart';
 
@@ -16,7 +17,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<RegisterUsernameChanged>(_onUsernameChanged);
     on<RegisterPhoneChanged>(_onPhoneChanged);
     on<RegisterPasswordChanged>(_onPasswordChanged);
-    on<RegisterSubmitted>(_onSubmitted);
+    on<RegisterOtpChanged>(_onOtpChanged);
+    on<RegisterSubmitted>(_onPhoneNumberSubmitted);
+    on<RegisterOtpSubmitted>(_onOtpSubmitted);
   }
 
   final AuthenticationRepository _authenticationRepository;
@@ -74,16 +77,55 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     );
   }
 
-  Future<void> _onSubmitted(
+  void _onOtpChanged(
+    RegisterOtpChanged event,
+    Emitter<RegisterState> emit,
+  ) {
+    final otp = Otp.dirty(value: event.otp);
+
+    emit(
+      state.copyWith(
+        otp: otp,
+        status: Formz.validate([state.phoneNumber, otp]),
+      ),
+    );
+  }
+
+  Future<void> _onPhoneNumberSubmitted(
     RegisterSubmitted event,
     Emitter<RegisterState> emit,
   ) async {
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
-        await _authenticationRepository
-            .phoneNumberRegisterRequest(state.phoneNumber.value);
-        emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        Tuple2<VerificationPhoneNumberCallBack, String> result =
+            await _authenticationRepository
+                .phoneNumberRegisterRequest(state.phoneNumber.value);
+        if (result.item1 == VerificationPhoneNumberCallBack.codeSent) {
+          emit(state.copyWith(
+              status: FormzStatus.submissionSuccess,
+              verificationId: result.item2));
+        } else if (result.item1 ==
+            VerificationPhoneNumberCallBack.verificationCompleted) {
+          emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        }
+      } catch (e) {
+        FirebaseLogger()
+            .log('register_bloc', "submitted_register: ${e.toString()}");
+        emit(state.copyWith(status: FormzStatus.submissionFailure));
+      }
+    }
+  }
+
+  Future<void> _onOtpSubmitted(
+    RegisterOtpSubmitted event,
+    Emitter<RegisterState> emit,
+  ) async {
+    if (state.status.isValidated) {
+      emit(state.copyWith(status: FormzStatus.submissionInProgress));
+      try {
+        await _authenticationRepository.otpCredentialRequest(
+            state.verificationId, state.otp.value);
       } catch (e) {
         FirebaseLogger()
             .log('register_bloc', "submitted_register: ${e.toString()}");

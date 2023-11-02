@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shop_app/shop_app.dart';
 
@@ -118,7 +119,11 @@ class _RegisterVerificationOtpPageState
                       btnCancelOnPress: () {},
                     ),
                   );
-                } else {}
+                } else {
+                  context
+                      .read<RegisterBloc>()
+                      .add(RegisterOtpChanged(txtOTPCode.text));
+                }
               },
             ),
           ),
@@ -131,7 +136,11 @@ class _RegisterVerificationOtpPageState
           //     }),
           CustomButtonWidget.buildLargeButton(
             btnText: "Continue",
-            onPress: () {},
+            onPress: () {
+              context
+                  .read<RegisterBloc>()
+                  .add(const RegisterOtpSubmitted());
+            },
           ),
         ],
       ),

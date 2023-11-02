@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shop_app/shop_app.dart';
+import 'package:tuple/tuple.dart';
 
 enum AuthenticationStatus {
   unknown,
@@ -134,28 +135,58 @@ class AuthenticationRepository {
     }
   }
 
-  Future<void> phoneNumberRegisterRequest(String phoneNumber) async {
+  Future<Tuple2<VerificationPhoneNumberCallBack, String>>
+      phoneNumberRegisterRequest(String phoneNumber) async {
     try {
+      Completer<Tuple2<VerificationPhoneNumberCallBack, String>> completer =
+          Completer();
       await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (PhoneAuthCredential credential) {
-          FirebaseLogger().log('verification_completed', "credential: ${credential.toString()}");
+          FirebaseLogger().log(
+              'verification_completed', "credential: ${credential.toString()}");
+          completer.complete(const Tuple2(
+              VerificationPhoneNumberCallBack.verificationCompleted, ""));
         },
         verificationFailed: (FirebaseAuthException e) {
           FirebaseLogger().log('verification_failed', "error: ${e.toString()}");
+          completer.complete(Tuple2(
+              VerificationPhoneNumberCallBack.verificationFailed, e.code));
         },
         codeSent: (String verificationId, int? resendToken) {
           FirebaseLogger().log('code_sent',
               "verificationId: ${verificationId.toString()} - resendToken: $resendToken");
+          completer.complete(
+              Tuple2(VerificationPhoneNumberCallBack.codeSent, verificationId));
         },
         codeAutoRetrievalTimeout: (String verificationId) {
           FirebaseLogger().log('code_auto_retrieval_timeout',
               "verificationId: ${verificationId.toString()}");
+          completer.complete(Tuple2(
+              VerificationPhoneNumberCallBack.codeAutoRetrievalTimeout,
+              verificationId));
         },
       );
+      return completer.future;
     } catch (e) {
       FirebaseLogger().log(
           'phone_number_register_request', "register_error: ${e.toString()}");
+      return Tuple2(VerificationPhoneNumberCallBack.unknown, e.toString());
+    }
+  }
+
+  Future<bool> otpCredentialRequest(String verificationId, String otp) async {
+    try {
+      // Create a PhoneAuthCredential with the code
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: otp);
+
+      // Sign the user in (or link) with the credential
+      await auth.signInWithCredential(credential);
+      return true;
+    } catch (e) {
+      FirebaseLogger().log('otp_credential_request', "error: ${e.toString()}");
+      return false;
     }
   }
 

@@ -1,6 +1,7 @@
 part of 'register_bloc.dart';
 
 enum RegisterMethod {
+  phoneNumber,
   email,
   googleAccount,
 }
@@ -48,8 +49,24 @@ class RegisterPasswordChanged extends RegisterEvent {
   List<Object> get props => [password];
 }
 
+class RegisterOtpChanged extends RegisterEvent {
+  const RegisterOtpChanged(this.otp);
+
+  final String otp;
+
+  @override
+  List<Object> get props => [otp];
+}
+
 class RegisterSubmitted extends RegisterEvent {
   const RegisterSubmitted();
+
+  @override
+  List<Object> get props => [];
+}
+
+class RegisterOtpSubmitted extends RegisterEvent {
+  const RegisterOtpSubmitted();
 
   @override
   List<Object> get props => [];

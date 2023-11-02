@@ -44,7 +44,7 @@ class RegisterBodyPage extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomButtonWidget.buildLargeButton(
                   onPress: () {
-                    // context.read<RegisterBloc>().add(const RegisterSubmitted());
+                    context.read<RegisterBloc>().add(const RegisterSubmitted());
                     Navigator.pushNamed(
                         context, RegisterVerificationOtpPage.routeName);
                   },

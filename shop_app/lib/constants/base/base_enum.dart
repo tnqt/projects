@@ -19,3 +19,10 @@ enum StorageType {
   firebaseStorage,
   other,
 }
+
+enum VerificationPhoneNumberCallBack {
+  verificationCompleted,
+  verificationFailed,
+  codeSent,
+  codeAutoRetrievalTimeout,
+}
