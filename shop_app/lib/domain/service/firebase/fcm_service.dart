@@ -9,23 +9,23 @@ class FCMService {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   Future<bool> registerFCM() async {
-    bool _result = false;
+    bool result = false;
     try {
       if (Platform.isIOS) {
-        _result = await _requestIosFCMPermission();
+        result = await _requestIosFCMPermission();
       } else {
-        _result = await _registerFCMToken();
+        result = await _registerFCMToken();
       }
       FirebaseLogger()
-          .log("register_fcm", "result: ${_result ? "Success" : "Failure"}");
+          .log("register_fcm", "result: ${result ? "Success" : "Failure"}");
 
       final prefs = await SharedPreferences.getInstance();
-      prefs.setBool(Constant.isRegisteredFcm, _result);
+      prefs.setBool(Constant.isRegisteredFcm, result);
 
-      return _result;
+      return result;
     } catch (e) {
       FirebaseLogger().logWarning("register_fcm", "error: ${e.toString()}");
-      return _result;
+      return result;
     }
   }
 

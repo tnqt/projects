@@ -34,7 +34,7 @@ class _RegisterVerificationOtpPageState
           child: Column(
             children: [
               const AppLogoWidget(),
-              _verificationOtpInstruction(),
+              _verificationOtpInstruction(context),
             ],
           ),
         ),
@@ -42,7 +42,7 @@ class _RegisterVerificationOtpPageState
     );
   }
 
-  Widget _verificationOtpInstruction() {
+  Widget _verificationOtpInstruction(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(
         Dimensions.paddingMedium,
@@ -82,8 +82,17 @@ class _RegisterVerificationOtpPageState
               },
               onClipboardFound: (value) {},
               hapticFeedbackType: HapticFeedbackType.lightImpact,
-              onCompleted: (pin) {},
-              onChanged: (value) {},
+              onCompleted: (pin) {
+                FirebaseLogger()
+                    .log("action_otp_authentication_pin", "pin: $pin");
+              },
+              onChanged: (value) {
+                FirebaseLogger()
+                    .log("action_otp_authentication_changed", "val: $value");
+                context
+                    .read<RegisterBloc>()
+                    .add(RegisterOtpChanged(txtOTPCode.text));
+              },
               cursor: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -97,7 +106,8 @@ class _RegisterVerificationOtpPageState
               ),
               textInputAction: TextInputAction.done,
               onSubmitted: (val) async {
-                FirebaseLogger().log("action_otp_authentication_continue", "");
+                FirebaseLogger()
+                    .log("action_otp_authentication_done", "val: $val");
                 if (txtOTPCode.text.length < 6) {
                   showDialog(
                     context: context,
@@ -120,26 +130,17 @@ class _RegisterVerificationOtpPageState
                     ),
                   );
                 } else {
-                  context
-                      .read<RegisterBloc>()
-                      .add(RegisterOtpChanged(txtOTPCode.text));
+                  context.read<RegisterBloc>().add(const RegisterOtpSubmitted());
                 }
               },
             ),
           ),
-          // CustomButtonWidget.buildRaisedButton(
-          //     btnText: "Continue",
-          //     onPress: () {
-          //       // context.read<RegisterBloc>().add(const RegisterSubmitted());
-          //       // Navigator.pushNamed(
-          //       //     context, RegisterVerificationOtpPage.routeName);
-          //     }),
           CustomButtonWidget.buildLargeButton(
             btnText: "Continue",
             onPress: () {
-              context
-                  .read<RegisterBloc>()
-                  .add(const RegisterOtpSubmitted());
+              FirebaseLogger()
+                    .log("action_otp_authentication_continue", "");
+              context.read<RegisterBloc>().add(const RegisterOtpSubmitted());
             },
           ),
         ],

@@ -10,7 +10,7 @@ class RegisterButtonWidget extends StatelessWidget {
     return BlocBuilder<RegisterBloc, RegisterState>(builder: (context, state) {
       return GestureDetector(
         onTap: () {
-          context.read<RegisterBloc>().add(const RegisterSubmitted());
+          context.read<RegisterBloc>().add(const RegisterPhoneSubmitted());
           Navigator.pushNamed(context, RegisterVerificationOtpPage.routeName);
         },
         behavior: HitTestBehavior.translucent,

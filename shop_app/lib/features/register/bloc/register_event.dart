@@ -58,8 +58,8 @@ class RegisterOtpChanged extends RegisterEvent {
   List<Object> get props => [otp];
 }
 
-class RegisterSubmitted extends RegisterEvent {
-  const RegisterSubmitted();
+class RegisterPhoneSubmitted extends RegisterEvent {
+  const RegisterPhoneSubmitted();
 
   @override
   List<Object> get props => [];

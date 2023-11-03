@@ -18,7 +18,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<RegisterPhoneChanged>(_onPhoneChanged);
     on<RegisterPasswordChanged>(_onPasswordChanged);
     on<RegisterOtpChanged>(_onOtpChanged);
-    on<RegisterSubmitted>(_onPhoneNumberSubmitted);
+    on<RegisterPhoneSubmitted>(_onPhoneNumberSubmitted);
     on<RegisterOtpSubmitted>(_onOtpSubmitted);
   }
 
@@ -56,10 +56,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     Emitter<RegisterState> emit,
   ) {
     final phoneNumber = PhoneNumber.dirty(value: event.phone);
+    FirebaseLogger().log("on_phone_changed", "phoneNumber: $phoneNumber");
     emit(state.copyWith(
         phoneNumber: phoneNumber,
         // status: Formz.validate(
-        //     [state.username, phoneNumber, state.password])));
+        // [state.username, phoneNumber, state.password])));
         status: Formz.validate([phoneNumber])));
   }
 
@@ -82,7 +83,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     Emitter<RegisterState> emit,
   ) {
     final otp = Otp.dirty(value: event.otp);
-
+    FirebaseLogger().log("on_otp_changed", "otp: $otp");
     emit(
       state.copyWith(
         otp: otp,
@@ -92,7 +93,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Future<void> _onPhoneNumberSubmitted(
-    RegisterSubmitted event,
+    RegisterPhoneSubmitted event,
     Emitter<RegisterState> emit,
   ) async {
     if (state.status.isValidated) {
@@ -101,6 +102,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         Tuple2<VerificationPhoneNumberCallBack, String> result =
             await _authenticationRepository
                 .phoneNumberRegisterRequest(state.phoneNumber.value);
+        FirebaseLogger()
+            .log('on_phone_number_submitted', "result 1: ${result.item1}");
         if (result.item1 == VerificationPhoneNumberCallBack.codeSent) {
           emit(state.copyWith(
               status: FormzStatus.submissionSuccess,
@@ -122,13 +125,14 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     Emitter<RegisterState> emit,
   ) async {
     if (state.status.isValidated) {
+      FirebaseLogger().log('on_otp_submitted',
+          "verificationId: ${state.verificationId} - otp: ${state.otp.value}");
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
         await _authenticationRepository.otpCredentialRequest(
             state.verificationId, state.otp.value);
       } catch (e) {
-        FirebaseLogger()
-            .log('register_bloc', "submitted_register: ${e.toString()}");
+        FirebaseLogger().log('register_bloc', "error: ${e.toString()}");
         emit(state.copyWith(status: FormzStatus.submissionFailure));
       }
     }

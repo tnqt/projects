@@ -18,6 +18,7 @@ class RegisterPage extends StatelessWidget {
       },
       child: const RegisterBodyPage(),
     );
+    // return const RegisterBodyPage();
   }
 }
 
@@ -44,9 +45,19 @@ class RegisterBodyPage extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               CustomButtonWidget.buildLargeButton(
                   onPress: () {
-                    context.read<RegisterBloc>().add(const RegisterSubmitted());
-                    Navigator.pushNamed(
-                        context, RegisterVerificationOtpPage.routeName);
+                    context.read<RegisterBloc>().add(const RegisterPhoneSubmitted());
+                    // Navigator.pushNamed(
+                    //     context, RegisterVerificationOtpPage.routeName);
+                    RegisterBloc bloc = context.read<RegisterBloc>();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BlocProvider.value(
+                          value: bloc,
+                          child: const RegisterVerificationOtpPage(),
+                        ),
+                      ),
+                    );
                   },
                   btnText: "Register"),
               // const RegisterButtonWidget(),

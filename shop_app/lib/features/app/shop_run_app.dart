@@ -50,6 +50,12 @@ class ShopRunApp extends StatelessWidget {
               userRepository: userRepository,
             ),
           ),
+          // BlocProvider<RegisterBloc>(
+          //   create: (BuildContext context) => RegisterBloc(
+          //     authenticationRepository: authenticationRepository,
+          //   ),
+          // ),
+
           // BlocProvider<NotificationCubit>(
           //   create: (BuildContext context) => NotificationCubit(),
           // ),

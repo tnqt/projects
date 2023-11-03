@@ -25,4 +25,5 @@ enum VerificationPhoneNumberCallBack {
   verificationFailed,
   codeSent,
   codeAutoRetrievalTimeout,
+  unknown,
 }

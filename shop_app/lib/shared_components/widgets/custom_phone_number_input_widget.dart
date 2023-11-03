@@ -59,9 +59,11 @@ class CustomPhoneNumberInputWidget extends StatelessWidget {
                 ),
                 textAlignVertical: TextAlignVertical.center,
                 onChanged: (value) {
+                  FirebaseLogger().log("custom_phone_number_input_widget_on_changed","value: $value");
                   onChangeCallBack(value);
                 },
                 validator: (value) {
+                  FirebaseLogger().log("custom_phone_number_input_widget_validator","value: $value");
                   if (value != null && value.isNotEmpty) {
                     onChangeCallBack(value);
                   }
