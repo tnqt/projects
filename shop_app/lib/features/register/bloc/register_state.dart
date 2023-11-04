@@ -1,5 +1,10 @@
 part of 'register_bloc.dart';
 
+enum RegisterStatus {
+  inProgress,
+  verificationOtpSuccess,
+  unknown,
+}
 class RegisterState extends Equatable {
   const RegisterState({
     this.status = FormzStatus.pure,
@@ -8,6 +13,7 @@ class RegisterState extends Equatable {
     this.password = const Password.pure(),
     this.otp = const Otp.pure(),
     this.verificationId = "",
+    this.registerStatus = RegisterStatus.unknown,
   });
 
   final FormzStatus status;
@@ -16,6 +22,7 @@ class RegisterState extends Equatable {
   final Password password;
   final Otp otp;
   final String verificationId;
+  final RegisterStatus registerStatus;
 
   RegisterState copyWith({
     FormzStatus? status,
@@ -24,6 +31,7 @@ class RegisterState extends Equatable {
     Password? password,
     Otp? otp,
     String? verificationId,
+    RegisterStatus? registerStatus,
   }) {
     return RegisterState(
       status: status ?? this.status,
@@ -32,6 +40,7 @@ class RegisterState extends Equatable {
       password: password ?? this.password,
       otp: otp ?? this.otp,
       verificationId: verificationId ?? this.verificationId,
+      registerStatus: registerStatus ?? this.registerStatus,
     );
   }
 
@@ -43,5 +52,6 @@ class RegisterState extends Equatable {
         password,
         otp,
         verificationId,
+        registerStatus,
       ];
 }

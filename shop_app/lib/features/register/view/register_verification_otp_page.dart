@@ -22,20 +22,27 @@ class _RegisterVerificationOtpPageState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBarWidget(
-        title: '',
-        height: MediaQuery.of(context).size.height > 812 ? 31 : 58,
-        backgroundColor: const Color(0xFFF6F6F6),
-        leadingColor: Colors.grey,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const AppLogoWidget(),
-              _verificationOtpInstruction(context),
-            ],
+    return BlocListener<RegisterBloc, RegisterState>(
+      listener: (context, state) {
+        if (state.registerStatus == RegisterStatus.verificationOtpSuccess) {
+          
+        }
+      },
+      child: Scaffold(
+        appBar: CustomAppBarWidget(
+          title: '',
+          height: MediaQuery.of(context).size.height > 812 ? 31 : 58,
+          backgroundColor: const Color(0xFFF6F6F6),
+          leadingColor: Colors.grey,
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const AppLogoWidget(),
+                _verificationOtpInstruction(context),
+              ],
+            ),
           ),
         ),
       ),
@@ -130,7 +137,9 @@ class _RegisterVerificationOtpPageState
                     ),
                   );
                 } else {
-                  context.read<RegisterBloc>().add(const RegisterOtpSubmitted());
+                  context
+                      .read<RegisterBloc>()
+                      .add(const RegisterOtpSubmitted());
                 }
               },
             ),
@@ -138,8 +147,7 @@ class _RegisterVerificationOtpPageState
           CustomButtonWidget.buildLargeButton(
             btnText: "Continue",
             onPress: () {
-              FirebaseLogger()
-                    .log("action_otp_authentication_continue", "");
+              FirebaseLogger().log("action_otp_authentication_continue", "");
               context.read<RegisterBloc>().add(const RegisterOtpSubmitted());
             },
           ),
