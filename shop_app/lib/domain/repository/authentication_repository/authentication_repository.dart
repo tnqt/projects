@@ -65,7 +65,7 @@ class AuthenticationRepository {
   /// Returns:
   ///   - A `Future<bool>` that resolves to `true` if the authentication is successful, and `false`
   ///     otherwise.
-  Future<bool> logIn({
+  Future<bool> logInWithEmail({
     required String email,
     required String password,
   }) async {
@@ -98,6 +98,17 @@ class AuthenticationRepository {
       return false;
     } catch (e) {
       FirebaseLogger().log('login', "login_error: ${e.toString()}");
+      return false;
+    }
+  }
+
+  Future<bool> loginWithPhoneNumber({
+    required String phoneNumber,
+  }) async {
+    try {
+      // auth
+      return true;
+    } catch (e) {
       return false;
     }
   }

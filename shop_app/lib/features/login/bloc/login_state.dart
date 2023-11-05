@@ -13,6 +13,7 @@ class LoginState extends Equatable {
     this.status = FormzStatus.pure,
     this.username = const Username.pure(),
     this.password = const Password.pure(),
+    this.phoneNumber = const PhoneNumber.pure(),
     this.isRememberMe = false,
     this.loginProgress = LoginProgress.unknown,
   });
@@ -20,6 +21,7 @@ class LoginState extends Equatable {
   final FormzStatus status;
   final Username username;
   final Password password;
+  final PhoneNumber phoneNumber;
   final bool isRememberMe;
   final LoginProgress loginProgress;
 
@@ -27,6 +29,7 @@ class LoginState extends Equatable {
     FormzStatus? status,
     Username? username,
     Password? password,
+    PhoneNumber? phoneNumber,
     bool? isRememberMe,
     LoginProgress? loginProgress,
   }) {
@@ -34,11 +37,19 @@ class LoginState extends Equatable {
       status: status ?? this.status,
       username: username ?? this.username,
       password: password ?? this.password,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
       isRememberMe: isRememberMe ?? this.isRememberMe,
       loginProgress: loginProgress ?? this.loginProgress,
     );
   }
 
   @override
-  List<Object> get props => [status, password, username, isRememberMe, loginProgress];
+  List<Object> get props => [
+        status,
+        password,
+        username,
+        phoneNumber,
+        isRememberMe,
+        loginProgress,
+      ];
 }

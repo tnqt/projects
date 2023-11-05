@@ -120,21 +120,29 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     }
   }
 
-  Future<void> _onOtpSubmitted(
+  Future<bool> _onOtpSubmitted(
     RegisterOtpSubmitted event,
     Emitter<RegisterState> emit,
   ) async {
+    bool result = false;
     if (state.status.isValidated) {
       FirebaseLogger().log('on_otp_submitted',
           "verificationId: ${state.verificationId} - otp: ${state.otp.value}");
-      emit(state.copyWith(status: FormzStatus.submissionInProgress));
+      emit(state.copyWith(
+        status: FormzStatus.submissionInProgress,
+        registerStatus: RegisterStatus.inProgress,
+      ));
       try {
-        await _authenticationRepository.otpCredentialRequest(
+        result = await _authenticationRepository.otpCredentialRequest(
             state.verificationId, state.otp.value);
+        if (result) {
+          
+        }
       } catch (e) {
         FirebaseLogger().log('register_bloc', "error: ${e.toString()}");
         emit(state.copyWith(status: FormzStatus.submissionFailure));
       }
     }
+    return result;
   }
 }
