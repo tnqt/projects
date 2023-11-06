@@ -4,7 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import 'package:shop_app/features/login/login.dart';
+import 'package:shop_app/shop_app.dart';
 
 part 'login_event.dart';
 
@@ -16,7 +16,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   })  : _authenticationRepository = authenticationRepository,
         super(const LoginState()) {
     on<LoginUsernameChanged>(_onUsernameChanged);
-    on<LoginEmailChanged>(_onEmailChanged);
+    on<LoginPhoneNumberChanged>(_onPhoneNumberChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
     on<LoginRememberMeChanged>(_onRememberMeChanged);
@@ -38,13 +38,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
   }
 
-  void _onEmailChanged(LoginEmailChanged event, Emitter<LoginState> emit) {
-    final email = Email.dirty(value: event.email);
+  void _onPhoneNumberChanged(
+      LoginPhoneNumberChanged event, Emitter<LoginState> emit) {
+    final phoneNumber = PhoneNumber.dirty(value: event.phoneNumber);
     emit(
       state.copyWith(
-        email: email,
+        phoneNumber: phoneNumber,
         status: Formz.validate(
-          [email, state.password],
+          [phoneNumber, state.password],
         ),
       ),
     );
@@ -58,7 +59,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(
       state.copyWith(
         password: password,
-        status: Formz.validate([state.email, password]),
+        status: Formz.validate([
+          // state.email,
+          password,
+        ]),
       ),
     );
   }
@@ -75,21 +79,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         ),
       );
       try {
-        final isAuth = await _authenticationRepository.logIn(
-          email: state.email.value,
-          password: state.password.value,
-        );
-        if (isAuth) {
-          // await Future.delayed(const Duration(milliseconds: 500));
-          emit(state.copyWith(
-            status: FormzStatus.submissionSuccess,
-            loginProgress: LoginProgress.loginSuccess,
-          ));
-        } else {
-          emit(state.copyWith(
-            status: FormzStatus.submissionFailure,
-            loginProgress: LoginProgress.loginFailure,
-          ));
+        if (state.phoneNumber.valid) {
+          // final isAuth = await _authenticationRepository.logInWithEmail(
+          //   email: state.email.value,
+          //   password: state.password.value,
+          // );
+          final isAuth = await _authenticationRepository.loginWithPhoneNumber(
+              phoneNumber: "");
+          if (isAuth) {
+            // await Future.delayed(const Duration(milliseconds: 500));
+            emit(state.copyWith(
+              status: FormzStatus.submissionSuccess,
+              loginProgress: LoginProgress.loginSuccess,
+            ));
+          } else {
+            emit(state.copyWith(
+              status: FormzStatus.submissionFailure,
+              loginProgress: LoginProgress.loginFailure,
+            ));
+          }
         }
       } catch (e) {
         FirebaseLogger().log('login_bloc', "submitted_login: ${e.toString()}");
@@ -104,7 +112,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       if (state.isRememberMe) {
         rememberMeModel = rememberMeModel.copyWith(
           isRemember: state.isRememberMe,
-          email: state.email.value,
+          // email: state.email.value,
           password: state.password.value,
         );
       }
@@ -130,9 +138,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) async {
     emit(state.copyWith(loginProgress: LoginProgress.forgotPasswordInProgress));
-    bool isValidEmail = Formz.validate([state.email]).isValidated;
+    bool isValidEmail = Formz.validate([
+      // state.email,
+    ]).isValidated;
     if (isValidEmail) {
-      await _authenticationRepository.forgotPasswordRequest(state.email.value);
+      // await _authenticationRepository.forgotPasswordRequest(
+      // state.email.value,
+      // );
       emit(state.copyWith(loginProgress: LoginProgress.unknown));
     }
   }
@@ -142,7 +154,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) async {
     try {
-      await _authenticationRepository.loginWithGoogleAccount();
+      // await _authenticationRepository.loginWithGoogleAccount();
     } catch (e) {
       FirebaseLogger()
           .log('login_bloc', 'login_with_google_account: error: $e');

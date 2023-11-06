@@ -9,7 +9,7 @@ part of 'remember_me_model.dart';
 RememberMeModel _$RememberMeModelFromJson(Map<String, dynamic> json) {
   return RememberMeModel(
     isRemember: json['isRemember'] as bool,
-    email: json['email'] as String,
+    phoneNumber: json['phoneNumber'] as String,
     password: json['password'] as String,
   );
 }
@@ -17,6 +17,6 @@ RememberMeModel _$RememberMeModelFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$RememberMeModelToJson(RememberMeModel instance) =>
     <String, dynamic>{
       'isRemember': instance.isRemember,
-      'email': instance.email,
+      'phoneNumber': instance.phoneNumber,
       'password': instance.password,
     };

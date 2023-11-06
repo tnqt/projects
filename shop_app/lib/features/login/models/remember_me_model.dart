@@ -8,28 +8,28 @@ part 'remember_me_model.g.dart';
 class RememberMeModel extends Equatable {
   const RememberMeModel({
     this.isRemember = false,
-    this.email = '',
+    this.phoneNumber = '',
     this.password = '',
   });
 
   final bool isRemember;
-  final String email;
+  final String phoneNumber;
   final String password;
 
   static const empty = RememberMeModel(
     isRemember: false,
-    email: '',
+    phoneNumber: '',
     password: '',
   );
 
   RememberMeModel copyWith({
     bool? isRemember,
-    String? email,
+    String? phoneNumber,
     String? password,
   }) {
     return RememberMeModel(
       isRemember: isRemember ?? this.isRemember,
-      email: email ?? this.email,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
       password: password ?? this.password,
     );
   }
@@ -42,7 +42,7 @@ class RememberMeModel extends Equatable {
   @override
   List<Object?> get props => [
     isRemember,
-    email,
+    phoneNumber,
     password
   ];
 }

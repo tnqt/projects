@@ -1,6 +1,6 @@
-import 'package:coffee_restaurant/coffee_restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/shop_app.dart';
 
 class ForgotPasswordWidget extends StatelessWidget {
   const ForgotPasswordWidget({Key? key}) : super(key: key);
@@ -30,17 +30,17 @@ class ForgotPasswordWidget extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: state.loginProgress ==
-                    LoginProgress.forgotPasswordInProgress
-                ? const Align(
-                    alignment: Alignment.centerLeft,
-                    child: CustomSpinkitCircle(
-                      height: 45,
-                    ))
-                : Container(),
-          )
+          // Expanded(
+          //   flex: 1,
+          //   child: state.loginProgress ==
+          //           LoginProgress.forgotPasswordInProgress
+          //       ? const Align(
+          //           alignment: Alignment.centerLeft,
+          //           child: CustomSpinkitCircle(
+          //             height: 45,
+          //           ))
+          //       : Container(),
+          // )
         ],
       );
     });

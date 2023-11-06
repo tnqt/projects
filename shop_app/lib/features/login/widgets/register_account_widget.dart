@@ -1,5 +1,5 @@
-import 'package:coffee_restaurant/coffee_restaurant.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/shop_app.dart';
 
 class RegisterAccountWidget extends StatelessWidget {
   const RegisterAccountWidget({Key? key}) : super(key: key);

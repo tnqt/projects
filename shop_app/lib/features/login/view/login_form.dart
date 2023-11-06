@@ -1,8 +1,7 @@
-import 'package:coffee_restaurant/coffee_restaurant.dart';
-import 'package:coffee_restaurant/config/translation/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:shop_app/shop_app.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -28,18 +27,17 @@ class LoginForm extends StatelessWidget {
                 children: [
                   const AppLogoWidget(),
                   const LoginInstructionWidget(),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.045),
-                  CustomEmailInputWidget(
-                    onChangeCallBack: (email) {
-                      context.read<LoginBloc>().add(LoginEmailChanged(email));
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.045),
+                  CustomPhoneNumberInputWidget(
+                    onChangeCallBack: (phoneNumber) {
+                      // context.read<LoginBloc>().add(LoginEmailChanged(email));
                     },
                   ),
                   CustomPasswordInputWidget(
                     onChangeCallBack: (password) {
-                      context
-                          .read<LoginBloc>()
-                          .add(LoginPasswordChanged(password));
+                      // context
+                      //     .read<LoginBloc>()
+                      //     .add(LoginPasswordChanged(password));
                     },
                   ),
                   const RememberMeWidget(),
@@ -48,7 +46,7 @@ class LoginForm extends StatelessWidget {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   _orContinueWith,
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  const LoginWithGoogleAccountWidget(),
+                  // const LoginWithGoogleAccountWidget(),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   const RegisterAccountWidget(),
                 ],
@@ -72,37 +70,6 @@ class LoginForm extends StatelessWidget {
       );
 }
 
-@visibleForTesting
-class AppLogoWidget extends StatelessWidget {
-  const AppLogoWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(
-        Dimensions.paddingDefault,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 30,
-            child: AspectRatio(
-              aspectRatio: 1 / 1,
-              child: Image.asset('assets/images/logo.png'),
-            ),
-          ),
-          const SizedBox(width: 5.0),
-          const Text(
-            'Thao Nguyen',
-            style: CustomTextStyle.textStyle16BlackW700,
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 @visibleForTesting
 class LoginInstructionWidget extends StatelessWidget {
@@ -114,15 +81,15 @@ class LoginInstructionWidget extends StatelessWidget {
       padding: const EdgeInsets.all(
         Dimensions.paddingMedium,
       ),
-      child: Column(
+      child: const Column(
         children: [
           Text(
-            AppLocalization.of(context).translate('login_your_account'),
+            'login your account',
             style: CustomTextStyle.textStyle18BlackW800,
           ),
-          const SizedBox(height: Dimensions.paddingDefault),
+          SizedBox(height: Dimensions.paddingDefault),
           Text(
-            AppLocalization.of(context).translate('login_msg'),
+            'Enter your phone number and password to access \n your account or create an account',
             style: CustomTextStyle.textStyle16Grey600W400,
             textAlign: TextAlign.center,
           ),
