@@ -25,7 +25,8 @@ class LoadingPage extends StatelessWidget {
             return const WaitingResourceScreen();
           } else {
             // return const DashboardPage();
-            return Container();
+            // return Container();
+            return const WaitingResourceScreen();
           }
         });
   }

@@ -108,6 +108,7 @@ class AuthenticationRepository {
     try {
       // auth
       // auth.signInWithCredential(credential);
+      // auth.signInWithCredential(credential)
       return true;
     } catch (e) {
       return false;
