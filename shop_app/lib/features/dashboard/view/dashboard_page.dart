@@ -5,6 +5,20 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      // appBar: DashboardAppBarWidget(
+      //   preferredSizeHeight: 100,
+      //   appBarHeightFromTop:
+      //       MediaQuery.of(context).size.height > 812 ? 100 : 70,
+      //   topPadding: MediaQuery.of(context).size.height > 812 ? 50 : 25,
+      // ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(),
+          ],
+        ),
+      ),
+    );
   }
 }
