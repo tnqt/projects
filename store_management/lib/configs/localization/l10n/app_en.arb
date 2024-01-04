@@ -1,0 +1,5 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello, World!",
+  // Add more key-value pairs for your localized strings
+}
