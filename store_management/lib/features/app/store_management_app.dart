@@ -1,7 +1,7 @@
-import 'package:coffee_restaurant/config/translation/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// StoreManagementApp is responsible for creating/providing the Bloc
 /// which will be consumed by the StoreManagementAppView
@@ -10,16 +10,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 class StoreManagementApp extends StatelessWidget {
   const StoreManagementApp({
     Key? key,
-    required this.authenticationRepository,
-    required this.userRepository,
+    // required this.authenticationRepository,
+    // required this.userRepository,
     required this.callback,
-    required this.storageRepository,
+    // required this.storageRepository,
     required this.locale,
   }) : super(key: key);
 
-  final AuthenticationRepository authenticationRepository;
-  final UserRepository userRepository;
-  final StorageRepository storageRepository;
+  // final AuthenticationRepository authenticationRepository;
+  // final UserRepository userRepository;
+  // final StorageRepository storageRepository;
 
   final VoidCallback callback;
   final Locale locale;
@@ -86,7 +86,7 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
       // ),
       locale: widget.locale,
       localizationsDelegates: const [
-        AppLocalization.delegate,
+        AppLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

@@ -1,5 +1,4 @@
 {
   "@@locale": "vi",
-  "helloWorld": "Xin Chào!",
-  // Add more key-value pairs for your localized strings
+  "helloWorld": "Xin Chào!"
 }
