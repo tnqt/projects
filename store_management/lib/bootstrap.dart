@@ -2,17 +2,18 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_management/store_management.dart';
 
-import 'features/app/app_bloc_observer.dart';
-
-void bootstrap() {
+void bootstrap() async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
   Bloc.observer = AppBlocObserver();
+
+  // await _configFlavor();
 
   // final storageRepository = StorageRepository(
   //   localStorageStoreApi: localStorageStoreApi,
@@ -54,3 +55,4 @@ void bootstrap() {
     callback: () async {},
   ));
 }
+
