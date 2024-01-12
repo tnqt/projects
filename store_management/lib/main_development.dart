@@ -1,22 +1,36 @@
-import 'package:flutter/material.dart';
-import 'package:store_management/bootstrap.dart';
+// // ignore_for_file: avoid_print
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:store_management/bootstrap.dart';
 
-  // await _firebaseConfiguration();
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   Firebase.initializeApp();
 
-  // final localStorageApi = LocalStorageStoreApi();
-  // final firebaseStorageApi = FirebaseStorageApi();
+//   // await _firebaseConfiguration();
 
-  bootstrap(
-    // localStorageStoreApi: localStorageApi,
-    // firebaseStorageApi: firebaseStorageApi,
-  );
-}
+//   // final localStorageApi = LocalStorageStoreApi();
+//   // final firebaseStorageApi = FirebaseStorageApi();
 
-// Future<void> _firebaseConfiguration() async {
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform,
+//   await _configFlavor();
+
+//   bootstrap(
+//     // localStorageStoreApi: localStorageApi,
+//     // firebaseStorageApi: firebaseStorageApi,
 //   );
+// }
+
+// // Future<void> _firebaseConfiguration() async {
+// //   await Firebase.initializeApp(
+// //     options: DefaultFirebaseOptions.currentPlatform,
+// //   );
+// // }
+
+
+// Future<void> _configFlavor() async {
+//   final String? flavor =
+//   await const MethodChannel('flavor').invokeMethod<String>('getFlavor');
+//   print("config_flavor - flavor: $flavor");
 // }
