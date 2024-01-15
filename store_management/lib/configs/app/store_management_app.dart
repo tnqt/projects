@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:store_management/store_management.dart';
 
 /// StoreManagementApp is responsible for creating/providing the Bloc
 /// which will be consumed by the StoreManagementAppView
@@ -33,6 +34,7 @@ class StoreManagementApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
+          ...MiniAppManager.createBlocProviders(),
         ],
         child: StoreManagementAppView(
           callback: callback,
@@ -69,13 +71,13 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'CoffeeRestaurant',
       showPerformanceOverlay: false,
       checkerboardRasterCacheImages: false,
       // initialRoute: SplashScreen.routeName,
       // navigatorKey: _navigatorKey,
-      navigatorKey: StoreManagementApp.navigatorKey,
+      // navigatorKey: StoreManagementApp.navigatorKey,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF6F6F6),
       ),
@@ -109,6 +111,7 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
           child: child ?? Container(),
         );
       },
+      routerConfig: routerConfig,
     );
   }
 }

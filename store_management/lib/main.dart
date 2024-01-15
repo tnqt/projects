@@ -2,8 +2,9 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:shared_module/shared_module.dart';
 import 'package:store_management/bootstrap.dart';
+import 'package:store_management/store_management.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,12 +15,12 @@ Future<void> main() async {
   // final localStorageApi = LocalStorageStoreApi();
   // final firebaseStorageApi = FirebaseStorageApi();
 
-  await _configFlavor();
+  await configureAppWithFlavor();
 
   bootstrap(
-    // localStorageStoreApi: localStorageApi,
-    // firebaseStorageApi: firebaseStorageApi,
-  );
+      // localStorageStoreApi: localStorageApi,
+      // firebaseStorageApi: firebaseStorageApi,
+      );
 }
 
 // Future<void> _firebaseConfiguration() async {
@@ -28,9 +29,16 @@ Future<void> main() async {
 //   );
 // }
 
-
-Future<void> _configFlavor() async {
-  final String? flavor =
-  await const MethodChannel('flavor').invokeMethod<String>('getFlavor');
-  print("config_flavor - flavor: $flavor");
+Future<GlobalConfig> configureAppWithFlavor() async {
+  final flavor = await NativeFlavors.getFlavor();
+  switch (flavor) {
+    case Environment.development:
+      return AppDevelopmentConfiguration();
+    case Environment.staging:
+      return AppStagingConfiguration();
+    case Environment.production:
+      return AppProductionConfiguration();
+    default:
+      return AppDevelopmentConfiguration();
+  }
 }
