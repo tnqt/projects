@@ -34,6 +34,7 @@ class StoreManagementApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
+          ...MiniAppManager.createBlocProviders(),
         ],
         child: StoreManagementAppView(
           callback: callback,
