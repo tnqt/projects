@@ -50,6 +50,7 @@ void bootstrap() async {
   Locale locale = Locale(phoneLanguage);
 
   runApp(StoreManagementApp(
+    authenticationRepository: AuthenticationRepository(),
     locale: locale,
     callback: () async {},
   ));
