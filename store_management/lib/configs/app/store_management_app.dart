@@ -11,14 +11,14 @@ import 'package:store_management/store_management.dart';
 class StoreManagementApp extends StatelessWidget {
   const StoreManagementApp({
     Key? key,
-    // required this.authenticationRepository,
+    required this.authenticationRepository,
     // required this.userRepository,
     required this.callback,
     // required this.storageRepository,
     required this.locale,
   }) : super(key: key);
 
-  // final AuthenticationRepository authenticationRepository;
+  final AuthenticationRepository authenticationRepository;
   // final UserRepository userRepository;
   // final StorageRepository storageRepository;
 
@@ -31,6 +31,9 @@ class StoreManagementApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider.value(
+          value: authenticationRepository,
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -100,13 +103,13 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
       builder: (context, child) {
         return MultiBlocListener(
           listeners: [
-            // BlocListener<AuthenticationBloc, AuthenticationState>(
-            //   listener: (context, state) => authHandler(
-            //     StoreManagementApp.navigatorKey.currentContext!,
-            //     state.status,
-            //     state.user,
-            //   ),
-            // ),
+            BlocListener<AuthenticationBloc, AuthenticationState>(
+              listener: (context, state) => authHandler(
+                StoreManagementApp.navigatorKey.currentContext!,
+                state.status,
+                state.user,
+              ),
+            ),
           ],
           child: child ?? Container(),
         );

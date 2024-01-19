@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_management/store_management.dart';
 
 part 'authentication_event.dart';
-
 part 'authentication_state.dart';
 
 class AuthenticationBloc
