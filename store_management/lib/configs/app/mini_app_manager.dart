@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:home/home.dart';
 import 'package:shared_module/shared_module.dart';
 
 List<MiniApp> miniApps = [
+  HomeApp()
   // BookingApp(),
   // EcommerceApp(),
   // FoodApp(),
