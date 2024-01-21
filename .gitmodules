@@ -1,0 +1,3 @@
+[submodule "store_management/submodules"]
+	path = store_management/submodules
+	url = https://github.com/tnqt/sub_module.git
