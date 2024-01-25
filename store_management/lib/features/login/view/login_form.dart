@@ -1,133 +1,132 @@
-// import 'package:coffee_restaurant/coffee_restaurant.dart';
-// import 'package:coffee_restaurant/config/translation/app_localization.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:formz/formz.dart';
 
-// class LoginForm extends StatelessWidget {
-//   const LoginForm({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocListener<LoginBloc, LoginState>(
-//       listener: (context, state) {
-//         if (state.status == FormzStatus.submissionFailure) {
-//           ScaffoldMessenger.of(context)
-//             ..hideCurrentSnackBar()
-//             ..showSnackBar(
-//               const SnackBar(content: Text('Authentication Failure')),
-//             );
-//         }
-//       },
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.end,
-//         children: [
-//           Expanded(
-//             child: SingleChildScrollView(
-//               child: Column(
-//                 children: [
-//                   const AppLogoWidget(),
-//                   const LoginInstructionWidget(),
-//                   SizedBox(
-//                       height: MediaQuery.of(context).size.height * 0.045),
-//                   CustomEmailInputWidget(
-//                     onChangeCallBack: (email) {
-//                       context.read<LoginBloc>().add(LoginEmailChanged(email));
-//                     },
-//                   ),
-//                   CustomPasswordInputWidget(
-//                     onChangeCallBack: (password) {
-//                       context
-//                           .read<LoginBloc>()
-//                           .add(LoginPasswordChanged(password));
-//                     },
-//                   ),
-//                   const RememberMeWidget(),
-//                   const LoginButtonWidget(),
-//                   const ForgotPasswordWidget(),
-//                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-//                   _orContinueWith,
-//                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-//                   const LoginWithGoogleAccountWidget(),
-//                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-//                   const RegisterAccountWidget(),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+class LoginForm extends StatelessWidget {
+  const LoginForm({Key? key}) : super(key: key);
 
-//   Widget get _orContinueWith => Container(
-//         margin: const EdgeInsets.all(
-//           Dimensions.paddingDefault,
-//         ),
-//         alignment: Alignment.center,
-//         child: const Text(
-//           '~ or continue with ~',
-//           style: CustomTextStyle.textStyle16Grey400W500,
-//         ),
-//       );
-// }
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state.status == FormzStatus.submissionFailure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              const SnackBar(content: Text('Authentication Failure')),
+            );
+        }
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const AppLogoWidget(),
+                  const LoginInstructionWidget(),
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.045),
+                  CustomEmailInputWidget(
+                    onChangeCallBack: (email) {
+                      context.read<LoginBloc>().add(LoginEmailChanged(email));
+                    },
+                  ),
+                  CustomPasswordInputWidget(
+                    onChangeCallBack: (password) {
+                      context
+                          .read<LoginBloc>()
+                          .add(LoginPasswordChanged(password));
+                    },
+                  ),
+                  const RememberMeWidget(),
+                  const LoginButtonWidget(),
+                  const ForgotPasswordWidget(),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  _orContinueWith,
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  const LoginWithGoogleAccountWidget(),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  const RegisterAccountWidget(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-// @visibleForTesting
-// class AppLogoWidget extends StatelessWidget {
-//   const AppLogoWidget({Key? key}) : super(key: key);
+  Widget get _orContinueWith => Container(
+        margin: const EdgeInsets.all(
+          Dimensions.paddingDefault,
+        ),
+        alignment: Alignment.center,
+        child: const Text(
+          '~ or continue with ~',
+          style: CustomTextStyle.textStyle16Grey400W500,
+        ),
+      );
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       alignment: Alignment.center,
-//       padding: const EdgeInsets.all(
-//         Dimensions.paddingDefault,
-//       ),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           SizedBox(
-//             height: 30,
-//             child: AspectRatio(
-//               aspectRatio: 1 / 1,
-//               child: Image.asset('assets/images/logo.png'),
-//             ),
-//           ),
-//           const SizedBox(width: 5.0),
-//           const Text(
-//             'Thao Nguyen',
-//             style: CustomTextStyle.textStyle16BlackW700,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+@visibleForTesting
+class AppLogoWidget extends StatelessWidget {
+  const AppLogoWidget({Key? key}) : super(key: key);
 
-// @visibleForTesting
-// class LoginInstructionWidget extends StatelessWidget {
-//   const LoginInstructionWidget({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(
+        Dimensions.paddingDefault,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 30,
+            child: AspectRatio(
+              aspectRatio: 1 / 1,
+              child: Image.asset('assets/images/logo.png'),
+            ),
+          ),
+          const SizedBox(width: 5.0),
+          const Text(
+            'Thao Nguyen',
+            style: CustomTextStyle.textStyle16BlackW700,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.all(
-//         Dimensions.paddingMedium,
-//       ),
-//       child: Column(
-//         children: [
-//           Text(
-//             AppLocalization.of(context).translate('login_your_account'),
-//             style: CustomTextStyle.textStyle18BlackW800,
-//           ),
-//           const SizedBox(height: Dimensions.paddingDefault),
-//           Text(
-//             AppLocalization.of(context).translate('login_msg'),
-//             style: CustomTextStyle.textStyle16Grey600W400,
-//             textAlign: TextAlign.center,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+@visibleForTesting
+class LoginInstructionWidget extends StatelessWidget {
+  const LoginInstructionWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(
+        Dimensions.paddingMedium,
+      ),
+      child: Column(
+        children: [
+          Text(
+            AppLocalization.of(context).translate('login_your_account'),
+            style: CustomTextStyle.textStyle18BlackW800,
+          ),
+          const SizedBox(height: Dimensions.paddingDefault),
+          Text(
+            AppLocalization.of(context).translate('login_msg'),
+            style: CustomTextStyle.textStyle16Grey600W400,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}

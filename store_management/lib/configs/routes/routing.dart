@@ -11,6 +11,7 @@ final routerConfig = GoRouter(
       builder: (context, state) => const HomePage(),
       // routes: MiniAppManager.getRoutes(),
     ),
+    ...MiniAppManager.getRoutes(), // In order navigate to sub module needs to add this line to get route of sub module
   ],
   errorBuilder: ((context, state) => const ErrorRouterWidget()),
 );
