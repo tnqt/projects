@@ -10,7 +10,7 @@ enum LoginProgress {
 
 class LoginState extends Equatable {
   const LoginState({
-    this.status = FormzStatus.pure,
+    this.status = FormzSubmissionStatus.initial,
     this.username = const Username.pure(),
     this.email = const Email.pure(),
     this.password = const Password.pure(),
@@ -18,7 +18,7 @@ class LoginState extends Equatable {
     this.loginProgress = LoginProgress.unknown,
   });
 
-  final FormzStatus status;
+  final FormzSubmissionStatus status;
   final Username username;
   final Email email;
   final Password password;
@@ -26,7 +26,7 @@ class LoginState extends Equatable {
   final LoginProgress loginProgress;
 
   LoginState copyWith({
-    FormzStatus? status,
+    FormzSubmissionStatus? status,
     Username? username,
     Email? email,
     Password? password,
