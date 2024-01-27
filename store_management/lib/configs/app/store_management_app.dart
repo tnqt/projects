@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:store_management/store_management.dart';
 
 /// StoreManagementApp is responsible for creating/providing the Bloc
@@ -47,21 +46,25 @@ class StoreManagementApp extends StatelessWidget {
         //   callback: callback,
         //   locale: locale,
         // ),
-        child: MultiBlocListener(
-          listeners: [
-            BlocListener<AuthenticationBloc, AuthenticationState>(
-              listener: (context, state) => authHandler(
-                // StoreManagementApp.navigatorKey.currentContext!,
-                context,
-                state.status,
-                state.user,
-              ),
-            ),
-          ],
-          child: StoreManagementAppView(
-            callback: callback,
-            locale: locale,
-          ),
+        // child: MultiBlocListener(
+        //   listeners: [
+        //     BlocListener<AuthenticationBloc, AuthenticationState>(
+        //       listener: (context, state) => authHandler(
+        //         // StoreManagementApp.navigatorKey.currentContext!,
+        //         context,
+        //         state.status,
+        //         state.user,
+        //       ),
+        //     ),
+        //   ],
+        //   child: StoreManagementAppView(
+        //     callback: callback,
+        //     locale: locale,
+        //   ),
+        // ),
+        child: StoreManagementAppView(
+          callback: callback,
+          locale: locale,
         ),
       ),
     );
@@ -83,8 +86,8 @@ class StoreManagementAppView extends StatefulWidget {
 }
 
 class StoreManagementAppViewState extends State<StoreManagementAppView> {
-  // final _navigatorKey = GlobalKey<NavigatorState>();
-  // NavigatorState get _navigator => _navigatorKey.currentState!;
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  NavigatorState get _navigator => _navigatorKey.currentState!;
 
   @override
   void dispose() {
@@ -98,17 +101,9 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
       title: 'CoffeeRestaurant',
       showPerformanceOverlay: false,
       checkerboardRasterCacheImages: false,
-      // initialRoute: SplashScreen.routeName,
-      // navigatorKey: _navigatorKey,
-      // navigatorKey: StoreManagementApp.navigatorKey,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF6F6F6),
       ),
-      // onGenerateRoute: (settings) => PageRouteBuilder(
-      //   pageBuilder: (context, _, __) => routes[settings.name]!(context),
-      //   settings: settings,
-      //   transitionDuration: const Duration(milliseconds: 400),
-      // ),
       locale: widget.locale,
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -120,12 +115,14 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
         Locale('vi', 'VietNam'),
         Locale('en', 'USA'),
       ],
-      // builder: (context, child) {
+      routerConfig: routerConfig,
+      // builder: (context1, child) {
       //   return MultiBlocListener(
       //     listeners: [
       //       BlocListener<AuthenticationBloc, AuthenticationState>(
-      //         listener: (context, state) => authHandler(
+      //         listener: (context1, state) => authHandler(
       //           StoreManagementApp.navigatorKey.currentContext!,
+      //           // context,
       //           state.status,
       //           state.user,
       //         ),
@@ -134,7 +131,6 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
       //     child: child ?? Container(),
       //   );
       // },
-      routerConfig: routerConfig,
     );
   }
 }

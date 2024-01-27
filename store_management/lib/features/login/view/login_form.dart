@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:shared_module/shared_module.dart';
+import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class LoginForm extends StatelessWidget {
@@ -29,14 +28,13 @@ class LoginForm extends StatelessWidget {
                 children: [
                   const AppLogoWidget(),
                   const LoginInstructionWidget(),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.045),
-                  CustomEmailInputWidget(
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.045),
+                  shared_module.CustomEmailInputWidget(
                     onChangeCallBack: (email) {
                       context.read<LoginBloc>().add(LoginEmailChanged(email));
                     },
                   ),
-                  CustomPasswordInputWidget(
+                  shared_module.CustomPasswordInputWidget(
                     onChangeCallBack: (password) {
                       context
                           .read<LoginBloc>()
@@ -63,12 +61,12 @@ class LoginForm extends StatelessWidget {
 
   Widget get _orContinueWith => Container(
         margin: const EdgeInsets.all(
-          Dimensions.paddingDefault,
+          shared_module.Dimensions.paddingDefault,
         ),
         alignment: Alignment.center,
         child: const Text(
           '~ or continue with ~',
-          style: CustomTextStyle.textStyle16Grey400W500,
+          style: shared_module.CustomTextStyle.textStyle16Grey400W500,
         ),
       );
 }
@@ -82,7 +80,7 @@ class AppLogoWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.all(
-        Dimensions.paddingDefault,
+        shared_module.Dimensions.paddingDefault,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +95,7 @@ class AppLogoWidget extends StatelessWidget {
           const SizedBox(width: 5.0),
           const Text(
             'Thao Nguyen',
-            style: CustomTextStyle.textStyle16BlackW700,
+            style: shared_module.CustomTextStyle.textStyle16BlackW700,
           ),
         ],
       ),
@@ -113,18 +111,18 @@ class LoginInstructionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(
-        Dimensions.paddingMedium,
+        shared_module.Dimensions.paddingMedium,
       ),
       child: Column(
         children: [
           Text(
-            AppLocalization.of(context).translate('login_your_account'),
-            style: CustomTextStyle.textStyle18BlackW800,
+            AppLocalizations.of(context)!.login_your_account,
+            style: shared_module.CustomTextStyle.textStyle18BlackW800,
           ),
-          const SizedBox(height: Dimensions.paddingDefault),
+          const SizedBox(height: shared_module.Dimensions.paddingDefault),
           Text(
-            AppLocalization.of(context).translate('login_msg'),
-            style: CustomTextStyle.textStyle16Grey600W400,
+            AppLocalizations.of(context)!.login_msg,
+            style: shared_module.CustomTextStyle.textStyle16Grey600W400,
             textAlign: TextAlign.center,
           ),
         ],

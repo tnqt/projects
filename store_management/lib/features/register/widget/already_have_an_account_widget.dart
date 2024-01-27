@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:shared_module/shared_module.dart';
-import 'package:store_management/store_management.dart';
 
-class RegisterAccountWidget extends StatelessWidget {
-  const RegisterAccountWidget({Key? key}) : super(key: key);
+class AlreadyHaveAnAccountWidget extends StatelessWidget {
+  const AlreadyHaveAnAccountWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, RegisterPage.routeName);
+        Navigator.of(context).pop();
       },
       child: RichText(
-        text: TextSpan(
-          text: 'Don\'t have an account? ',
+        text: const TextSpan(
+          text: 'Already have an account? ',
           style: CustomTextStyle.textStyle16Grey600W400,
           children: [
             TextSpan(
-                text: 'Register',
+                text: 'Login',
                 style: CustomTextStyle.textStyle16GreenW700),
           ],
         ),
