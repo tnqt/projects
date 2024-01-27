@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:store_management/store_management.dart';
 
 void authHandler(
@@ -10,7 +11,7 @@ void authHandler(
       // Navigator.pushNamed(context, LoadingPage.routeName);
       break;
     case AuthenticationStatus.unauthenticated:
-      // Navigator.pushNamed(context, LoginPage.routeName);
+      GoRouter.of(context).pushNamed(RouteNames.loginPage);
       break;
     case AuthenticationStatus.unknown:
       break;

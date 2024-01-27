@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:shared_module/shared_module.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
@@ -112,7 +113,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
 
       prefs.setString(
-        Constant.rememberMeInfoLogin,
+        SharedConstant.rememberMeInfoLogin,
         json.encode(
           rememberMeModel.toJson(),
         ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseLogger {
   FirebaseLogger._internal();
@@ -27,6 +28,10 @@ class FirebaseLogger {
         'dateTime': "${DateTime.now()}",
       },
     );
+
+    if (kDebugMode) {
+      print("$title - $message");
+    }
 
     // Store log via flog
     // message.isEmpty

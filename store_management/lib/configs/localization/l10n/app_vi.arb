@@ -1,4 +1,7 @@
 {
   "@@locale": "vi",
-  "helloWorld": "Xin Chào!"
+  "helloWorld": "Xin Chào!",
+  "login_your_account": "Đăng nhập tài khoản của bạn",
+  "login_msg": "Nhập email và mật khẩu của bạn để truy cập \n tài khoản của bạn hoặc tạo một tài khoản",
+  "remember_me": "Nhớ tôi"
 }
