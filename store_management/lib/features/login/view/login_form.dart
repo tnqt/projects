@@ -45,7 +45,7 @@ class LoginForm extends StatelessWidget {
                   const LoginButtonWidget(),
                   const ForgotPasswordWidget(),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                  _orContinueWith,
+                  _orContinueWith(context),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   const LoginWithGoogleAccountWidget(),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
@@ -59,16 +59,18 @@ class LoginForm extends StatelessWidget {
     );
   }
 
-  Widget get _orContinueWith => Container(
+  Widget _orContinueWith(BuildContext context) {
+    return Container(
         margin: const EdgeInsets.all(
           shared_module.Dimensions.paddingDefault,
         ),
         alignment: Alignment.center,
-        child: const Text(
-          '~ or continue with ~',
+        child: Text(
+          AppLocalizations.of(context)!.or_continue_with,
           style: shared_module.CustomTextStyle.textStyle16Grey400W500,
         ),
       );
+  } 
 }
 
 @visibleForTesting

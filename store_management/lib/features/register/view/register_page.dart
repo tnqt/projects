@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_module/shared_module.dart';
+import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -33,29 +33,29 @@ class RegisterBodyPage extends StatelessWidget {
           child: Column(
             children: [
               _appLogo(),
-              _registerInstruction(),
+              _registerInstruction(context),
               SizedBox(height: MediaQuery.of(context).size.height * 0.045),
-              CustomUserNameInputWidget(
+              shared_module.CustomUserNameInputWidget(
                 onChangeCallBack: (userName) {
                   context
                       .read<RegisterBloc>()
                       .add(RegisterUsernameChanged(userName));
                 },
               ),
-              CustomEmailInputWidget(
+              shared_module.CustomEmailInputWidget(
                 onChangeCallBack: (email) {
                   context.read<RegisterBloc>().add(RegisterEmailChanged(email));
                 },
                 isRegister: true,
               ),
-              CustomPhoneInputWidget(
+              shared_module.CustomPhoneInputWidget(
                 onChangeCallBack: (phoneNumber) {
                   context
                       .read<RegisterBloc>()
                       .add(RegisterPhoneChanged(phoneNumber));
                 },
               ),
-              CustomPasswordInputWidget(
+              shared_module.CustomPasswordInputWidget(
                 onChangeCallBack: (password) {
                   context
                       .read<RegisterBloc>()
@@ -78,43 +78,43 @@ class RegisterBodyPage extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.all(
-        Dimensions.paddingDefault,
+        shared_module.Dimensions.paddingDefault,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // SizedBox(
-          //   height: 30,
-          //   child: AspectRatio(
-          //     aspectRatio: 1 / 1,
-          //     child: Image.asset('assets/images/logo.png'),
-          //   ),
-          // ),
+          SizedBox(
+            height: 30,
+            child: AspectRatio(
+              aspectRatio: 1 / 1,
+              child: Image.asset('assets/images/logo.png'),
+            ),
+          ),
           const SizedBox(width: 5.0),
           const Text(
             'Thao Nguyen',
-            style: CustomTextStyle.textStyle16BlackW700,
+            style: shared_module.CustomTextStyle.textStyle16BlackW700,
           ),
         ],
       ),
     );
   }
 
-  Widget _registerInstruction() {
+  Widget _registerInstruction(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(
-        Dimensions.paddingMedium,
+        shared_module.Dimensions.paddingMedium,
       ),
-      child: const Column(
+      child: Column(
         children: [
           Text(
-            'Create An Account',
-            style: CustomTextStyle.textStyle18BlackW800,
+            AppLocalizations.of(context)!.create_an_account,
+            style: shared_module.CustomTextStyle.textStyle18BlackW800,
           ),
-          SizedBox(height: Dimensions.paddingDefault),
+          const SizedBox(height: shared_module.Dimensions.paddingDefault),
           Text(
-            'Register with your own active email and new \n password or login your account',
-            style: CustomTextStyle.textStyle16Grey600W400,
+            AppLocalizations.of(context)!.register_msg,
+            style: shared_module.CustomTextStyle.textStyle16Grey600W400,
             textAlign: TextAlign.center,
           ),
         ],

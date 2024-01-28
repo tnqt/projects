@@ -1,7 +1,16 @@
 {
   "@@locale": "vi",
-  "helloWorld": "Xin Chào!",
-  "login_your_account": "Đăng nhập tài khoản của bạn",
-  "login_msg": "Nhập email và mật khẩu của bạn để truy cập \n tài khoản của bạn hoặc tạo một tài khoản",
-  "remember_me": "Nhớ tôi"
+  "helloWorld": "Xin chào, Thế Giới!",
+  "login_your_account": "Đăng Nhập Tài Khoản Của Bạn",
+  "login_msg": "Nhập email và mật khẩu để truy cập \n vào tài khoản của bạn hoặc tạo một tài khoản mới",
+  "remember_me": "Nhớ tôi",
+  "or_continue_with": "~ hoặc tiếp tục với ~",
+  "forgot_password": "Quên mật khẩu?",
+  "login": "Đăng Nhập",
+  "do_not_have_an_account": "Chưa có tài khoản? ",
+  "register": "Đăng Ký",
+  "create_an_account": "Tạo Một Tài Khoản",
+  "register_msg": "Đăng ký với địa chỉ email hoạt động của bạn và \n mật khẩu mới hoặc đăng nhập tài khoản của bạn",
+  "already_have_an_account": "Đã có tài khoản? ",
+  "prepare_the_resource": "Chuẩn bị nguồn tài nguyên"
 }

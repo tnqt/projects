@@ -11,7 +11,12 @@ void authHandler(
       // Navigator.pushNamed(context, LoadingPage.routeName);
       break;
     case AuthenticationStatus.unauthenticated:
-      GoRouter.of(context).pushNamed(RouteNames.loginPage);
+      Future.delayed(const Duration(seconds: 5), () {
+        GoRouter.of(context).pushNamed(RouteNames.loginPage);
+      });
+
+      // GoRouter.of(context).pushNamed(RouteNames.home);
+
       break;
     case AuthenticationStatus.unknown:
       break;

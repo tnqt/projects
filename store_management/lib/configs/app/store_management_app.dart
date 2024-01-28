@@ -98,15 +98,16 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'CoffeeRestaurant',
+      title: 'Store Management',
       showPerformanceOverlay: false,
       checkerboardRasterCacheImages: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF6F6F6),
       ),
       locale: widget.locale,
-      localizationsDelegates: const [
+      localizationsDelegates: [
         AppLocalizations.delegate,
+        ...MiniAppManager.getLocalizationsDelegates(),
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
