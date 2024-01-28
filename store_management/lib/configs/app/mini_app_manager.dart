@@ -4,6 +4,7 @@ import 'package:home/home.dart';
 import 'package:shared_module/shared_module.dart';
 
 List<MiniApp> miniApps = [
+  SharedModuleApp(),
   HomeApp()
   // BookingApp(),
   // EcommerceApp(),

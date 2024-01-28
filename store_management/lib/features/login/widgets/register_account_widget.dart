@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_module/shared_module.dart';
+import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class RegisterAccountWidget extends StatelessWidget {
@@ -13,12 +13,12 @@ class RegisterAccountWidget extends StatelessWidget {
       },
       child: RichText(
         text: TextSpan(
-          text: 'Don\'t have an account? ',
-          style: CustomTextStyle.textStyle16Grey600W400,
+          text: AppLocalizations.of(context)!.do_not_have_an_account,
+          style: shared_module.CustomTextStyle.textStyle16Grey600W400,
           children: [
             TextSpan(
-                text: 'Register',
-                style: CustomTextStyle.textStyle16GreenW700),
+                text: AppLocalizations.of(context)!.register,
+                style: shared_module.CustomTextStyle.textStyle16GreenW700),
           ],
         ),
       ),
