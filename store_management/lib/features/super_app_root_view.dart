@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_module/shared_module.dart';
 import 'package:store_management/store_management.dart';
 
 class SuperAppRootView extends StatelessWidget {
