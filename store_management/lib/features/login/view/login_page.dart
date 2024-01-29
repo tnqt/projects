@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class LoginPage extends StatelessWidget {
@@ -21,8 +22,8 @@ class LoginPage extends StatelessWidget {
           child: BlocProvider(
             create: (context) {
               return LoginBloc(
-                  authenticationRepository:
-                      RepositoryProvider.of<AuthenticationRepository>(context));
+                  authenticationRepository: RepositoryProvider.of<
+                      shared_module.AuthenticationRepository>(context));
             },
             child: const LoginForm(),
           ),

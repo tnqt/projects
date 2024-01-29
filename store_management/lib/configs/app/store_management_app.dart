@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 /// StoreManagementApp is responsible for creating/providing the Bloc
@@ -17,8 +18,8 @@ class StoreManagementApp extends StatelessWidget {
     required this.locale,
   }) : super(key: key);
 
-  final AuthenticationRepository authenticationRepository;
-  final UserRepository userRepository;
+  final shared_module.AuthenticationRepository authenticationRepository;
+  final shared_module.UserRepository userRepository;
   // final StorageRepository storageRepository;
 
   final VoidCallback callback;
@@ -36,10 +37,11 @@ class StoreManagementApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<AuthenticationBloc>(
-              create: (BuildContext context) => AuthenticationBloc(
-                  authenticationRepository: authenticationRepository,
-                  userRepository: userRepository)),
+          BlocProvider<shared_module.AuthenticationBloc>(
+              create: (BuildContext context) =>
+                  shared_module.AuthenticationBloc(
+                      authenticationRepository: authenticationRepository,
+                      userRepository: userRepository)),
           ...MiniAppManager.createBlocProviders(),
         ],
         // child: StoreManagementAppView(

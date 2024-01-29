@@ -14,7 +14,7 @@ class RegisterPage extends StatelessWidget {
       create: (context) {
         return RegisterBloc(
           authenticationRepository:
-              RepositoryProvider.of<AuthenticationRepository>(context),
+              RepositoryProvider.of<shared_module.AuthenticationRepository>(context),
         );
       },
       child: const RegisterBodyPage(),
