@@ -3,17 +3,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:store_management/store_management.dart';
-
 
 import './step/the_app_is_running.dart';
-import './step/i_see_text.dart';
+import './step/i_see_splash_page.dart';
+import './step/i_see_logo_image.dart';
+import './step/i_see_widget.dart';
 
 void main() {
   group('''Splash''', () {
     testWidgets('''The Splash just started''', (tester) async {
       await theAppIsRunning(tester);
-      await iSeeText(tester, 'Hello Thao Nguyen store management');
+      await iSeeSplashPage(tester);
+      await iSeeLogoImage(tester);
+      await iSeeWidget(tester, LinearProgressIndicator);
     });
   });
 }
