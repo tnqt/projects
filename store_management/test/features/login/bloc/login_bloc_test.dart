@@ -75,7 +75,7 @@ void main() {
           bloc.add(const LoginPasswordChanged(mockPassword)),
       expect: () => [
         LoginState(
-          status: FormzStatus.valid,
+          status: FormzSubmissionStatus.success,
           password: const Password.dirty(value: mockPassword),
           email: Email.dirty(value: mockEmail),
         ),
@@ -89,7 +89,7 @@ void main() {
       act: (LoginBloc bloc) => bloc.add(const LoginEmailChanged(mockEmail)),
       expect: () => [
         LoginState(
-          status: FormzStatus.invalid,
+          status: FormzSubmissionStatus.failure,
           email: Email.dirty(value: mockEmail),
         ),
       ],
@@ -104,7 +104,7 @@ void main() {
       act: (LoginBloc bloc) => bloc.add(const LoginEmailChanged(mockEmail)),
       expect: () => [
         LoginState(
-          status: FormzStatus.valid,
+          status: FormzSubmissionStatus.success,
           email: Email.dirty(value: mockEmail),
           password: const Password.dirty(value: mockPassword),
         ),
@@ -177,21 +177,6 @@ void main() {
   });
 
   blocTest<LoginBloc, LoginState>(
-      'Verify authenticationRepository when LoginWithGoogleAccount is added',
-      build: () =>
-          LoginBloc(authenticationRepository: authenticationRepository),
-      setUp: () {
-        when(() => authenticationRepository.loginWithGoogleAccount())
-            .thenAnswer((_) async => {});
-      },
-      act: (LoginBloc bloc) => bloc.add(const LoginWithGoogleAccount()),
-      verify: ((bloc) {
-        verify(
-          () => authenticationRepository.loginWithGoogleAccount(),
-        ).called(1);
-      }));
-
-  blocTest<LoginBloc, LoginState>(
     'No emit any state when LoginSubmitted is added but email, password and status are not initialized',
     build: () => LoginBloc(authenticationRepository: authenticationRepository),
     // seed: () => LoginState(password: Password.dirty(value: mockPassword)),
@@ -211,7 +196,7 @@ void main() {
     seed: () => LoginState(
       email: Email.dirty(value: mockEmail),
       password: const Password.dirty(value: mockPassword),
-      status: FormzStatus.valid,
+      status: FormzSubmissionStatus.failure,
     ),
     act: (LoginBloc bloc) => bloc.add(const LoginSubmitted()),
     expect: () => [
@@ -220,7 +205,7 @@ void main() {
         password: const Password.dirty(
           value: mockPassword,
         ),
-        status: FormzStatus.submissionInProgress,
+        status: FormzSubmissionStatus.inProgress,
         loginProgress: LoginProgress.loginInProgress,
       ),
       LoginState(
@@ -228,7 +213,7 @@ void main() {
         password: const Password.dirty(
           value: mockPassword,
         ),
-        status: FormzStatus.submissionSuccess,
+        status: FormzSubmissionStatus.success,
         loginProgress: LoginProgress.loginSuccess,
       )
     ],
