@@ -70,13 +70,13 @@ void main() {
       'Emit the password and status is valid when LoginPasswordChanged is added and email is initialized',
       build: () =>
           LoginBloc(authenticationRepository: authenticationRepository),
-      seed: () => LoginState(email: Email.dirty(value: mockEmail)),
+      seed: () => const LoginState(email: Email.dirty(value: mockEmail)),
       act: (LoginBloc bloc) =>
           bloc.add(const LoginPasswordChanged(mockPassword)),
       expect: () => [
-        LoginState(
+        const LoginState(
           status: FormzSubmissionStatus.success,
-          password: const Password.dirty(value: mockPassword),
+          password: Password.dirty(value: mockPassword),
           email: Email.dirty(value: mockEmail),
         ),
       ],
@@ -88,7 +88,7 @@ void main() {
           LoginBloc(authenticationRepository: authenticationRepository),
       act: (LoginBloc bloc) => bloc.add(const LoginEmailChanged(mockEmail)),
       expect: () => [
-        LoginState(
+        const LoginState(
           status: FormzSubmissionStatus.failure,
           email: Email.dirty(value: mockEmail),
         ),
@@ -103,10 +103,10 @@ void main() {
           const LoginState(password: Password.dirty(value: mockPassword)),
       act: (LoginBloc bloc) => bloc.add(const LoginEmailChanged(mockEmail)),
       expect: () => [
-        LoginState(
+        const LoginState(
           status: FormzSubmissionStatus.success,
           email: Email.dirty(value: mockEmail),
-          password: const Password.dirty(value: mockPassword),
+          password: Password.dirty(value: mockPassword),
         ),
       ],
     );
@@ -153,18 +153,18 @@ void main() {
         'Emit the loginProgress is unknown when LoginForgotPassword is added and email is initialized',
         build: () =>
             LoginBloc(authenticationRepository: authenticationRepository),
-        seed: () => LoginState(email: Email.dirty(value: mockEmail)),
+        seed: () => const LoginState(email: Email.dirty(value: mockEmail)),
         setUp: () {
           when(() => authenticationRepository.forgotPasswordRequest(any()))
               .thenAnswer((_) async => true);
         },
         act: (LoginBloc bloc) => bloc.add(const LoginForgotPassword()),
         expect: () => [
-              LoginState(
+              const LoginState(
                 email: Email.dirty(value: mockEmail),
                 loginProgress: LoginProgress.forgotPasswordInProgress,
               ),
-              LoginState(
+              const LoginState(
                 email: Email.dirty(value: mockEmail),
                 loginProgress: LoginProgress.unknown,
               ),
@@ -179,7 +179,6 @@ void main() {
   blocTest<LoginBloc, LoginState>(
     'No emit any state when LoginSubmitted is added but email, password and status are not initialized',
     build: () => LoginBloc(authenticationRepository: authenticationRepository),
-    // seed: () => LoginState(password: Password.dirty(value: mockPassword)),
     act: (LoginBloc bloc) => bloc.add(const LoginSubmitted()),
     expect: () => [],
   );
@@ -193,24 +192,24 @@ void main() {
             email: mockEmail, password: mockPassword),
       ).thenAnswer((_) async => true);
     },
-    seed: () => LoginState(
+    seed: () => const LoginState(
       email: Email.dirty(value: mockEmail),
-      password: const Password.dirty(value: mockPassword),
-      status: FormzSubmissionStatus.failure,
+      password: Password.dirty(value: mockPassword),
+      status: FormzSubmissionStatus.success,
     ),
     act: (LoginBloc bloc) => bloc.add(const LoginSubmitted()),
     expect: () => [
-      LoginState(
+      const LoginState(
         email: Email.dirty(value: mockEmail),
-        password: const Password.dirty(
+        password: Password.dirty(
           value: mockPassword,
         ),
         status: FormzSubmissionStatus.inProgress,
         loginProgress: LoginProgress.loginInProgress,
       ),
-      LoginState(
+      const LoginState(
         email: Email.dirty(value: mockEmail),
-        password: const Password.dirty(
+        password: Password.dirty(
           value: mockPassword,
         ),
         status: FormzSubmissionStatus.success,
