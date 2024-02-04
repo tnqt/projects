@@ -1,0 +1,44 @@
+Feature: Register Body Page
+
+    Scenario: Register Body Page renders the correct widget
+        Given the app is running
+        Then I see Register Body Page
+        And I see Logo Image
+        And I see {'Thao Nguyen'} text
+        And I see {'Create An Account'} text
+        And I see {'Register with your own active email and new \n password or login your account'} text
+        And I see {CustomUserNameInputWidget} widget
+        And I see {CustomEmailInputWidget} widget
+        And I see {CustomPhoneInputWidget} widget
+        And I see {CustomPasswordInputWidget} widget
+        And I see {RegisterButtonWidget} widget
+        And I see {AlreadyHaveAnAccountWidget} widget
+
+    Scenario: fire the correct event when user text field is input
+        Given the app is running
+        When I enter <input> text into <field> text field
+        | input      | field |
+        | 'TN'       |   'TN'  |
+        Then I see {'TN'} text
+
+    Scenario: fire the correct event when email text field is input
+        Given the app is running
+        When I enter <input> text into <field> text field
+        | input      | field |
+        | 'email@gmail.com'       |   'email@gmail.com'  |
+        Then I see {'email@gmail.com'} text
+
+    Scenario: fire the correct event when phone text field is input
+        Given the app is running
+        When I enter <input> text into <field> text field
+        | input      | field |
+        | '0123456789'       |   '0123456789'  |
+        Then I see {'0123456789'} text
+        
+    Scenario: fire the correct event when password text field is input
+        Given the app is running
+        When I enter <input> text into <field> text field
+        | input      | field |
+        | 'password'       |   'password'  |
+        Then I see {'password'} text
+
