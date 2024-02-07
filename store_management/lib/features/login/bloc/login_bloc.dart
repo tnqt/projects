@@ -5,7 +5,6 @@ import 'package:shared_module/shared_module.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import 'package:store_management/store_management.dart';
 
 part 'login_event.dart';
 
