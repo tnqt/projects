@@ -13,7 +13,6 @@ class RegisterAccountWidget extends StatelessWidget {
       },
       child: RichText(
         text: TextSpan(
-          text: AppLocalizations.of(context)!.do_not_have_an_account,
           style: shared_module.CustomTextStyle.textStyle16Grey600W400,
           children: [
             TextSpan(

@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:shared_module/shared_module.dart';
-import 'package:store_management/store_management.dart';
 
 part 'register_event.dart';
 

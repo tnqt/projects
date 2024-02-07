@@ -5,12 +5,12 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _WaitingScreen();
+    return const WaitingScreen();
   }
 }
 
-class _WaitingScreen extends StatelessWidget {
-  const _WaitingScreen({Key? key}) : super(key: key);
+class WaitingScreen extends StatelessWidget {
+  const WaitingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class _WaitingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+              key: const Key('BoxDecorationWithSplashPage'),
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.height * 0.1,
               decoration: BoxDecoration(

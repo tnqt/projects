@@ -14,13 +14,13 @@ class StoreManagementApp extends StatelessWidget {
     required this.authenticationRepository,
     required this.userRepository,
     required this.callback,
-    // required this.storageRepository,
+    required this.storageRepository,
     required this.locale,
   }) : super(key: key);
 
   final shared_module.AuthenticationRepository authenticationRepository;
   final shared_module.UserRepository userRepository;
-  // final StorageRepository storageRepository;
+  final shared_module.StorageRepository storageRepository;
 
   final VoidCallback callback;
   final Locale locale;
@@ -44,26 +44,6 @@ class StoreManagementApp extends StatelessWidget {
                       userRepository: userRepository)),
           ...MiniAppManager.createBlocProviders(),
         ],
-        // child: StoreManagementAppView(
-        //   callback: callback,
-        //   locale: locale,
-        // ),
-        // child: MultiBlocListener(
-        //   listeners: [
-        //     BlocListener<AuthenticationBloc, AuthenticationState>(
-        //       listener: (context, state) => authHandler(
-        //         // StoreManagementApp.navigatorKey.currentContext!,
-        //         context,
-        //         state.status,
-        //         state.user,
-        //       ),
-        //     ),
-        //   ],
-        //   child: StoreManagementAppView(
-        //     callback: callback,
-        //     locale: locale,
-        //   ),
-        // ),
         child: StoreManagementAppView(
           callback: callback,
           locale: locale,
@@ -88,9 +68,6 @@ class StoreManagementAppView extends StatefulWidget {
 }
 
 class StoreManagementAppViewState extends State<StoreManagementAppView> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState!;
-
   @override
   void dispose() {
     widget.callback.call();
@@ -119,21 +96,6 @@ class StoreManagementAppViewState extends State<StoreManagementAppView> {
         Locale('en', 'USA'),
       ],
       routerConfig: routerConfig,
-      // builder: (context1, child) {
-      //   return MultiBlocListener(
-      //     listeners: [
-      //       BlocListener<AuthenticationBloc, AuthenticationState>(
-      //         listener: (context1, state) => authHandler(
-      //           StoreManagementApp.navigatorKey.currentContext!,
-      //           // context,
-      //           state.status,
-      //           state.user,
-      //         ),
-      //       ),
-      //     ],
-      //     child: child ?? Container(),
-      //   );
-      // },
     );
   }
 }
