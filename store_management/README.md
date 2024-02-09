@@ -17,3 +17,10 @@ samples, guidance on mobile development, and a full API reference.
 
 
 flutter run --flavor development -t lib/main_development.dart
+
+- How to auto generate bdd testing:
+    flutter packages pub run build_runner watch --delete-conflicting-outputs
+
+- Analyze and apply the dart fix:
+    flutter analyze
+    dart fix --apply
