@@ -43,6 +43,14 @@ jobs:
       - name: Flutter version
         working-directory: store_management
         run: flutter --version
+
+      - name: Create submodules
+        working-directory: store_management
+        run: mkdir submodules && cd submodules
+
+      - name: clone submodules
+        working-directory: store_management
+        run: git clone --recursive https://github.com/tnqt/sub_module.git && cd ..
         
       - name: Install dependencies
         working-directory: store_management
