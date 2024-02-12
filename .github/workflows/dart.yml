@@ -21,7 +21,7 @@ jobs:
       - name: Install Flutter
         run: |
           # git clone --depth 1 https://github.com/flutter/flutter.git -b stable --depth 1
-          git clone https://github.com/flutter/flutter.git --branch 3.7.3
+          git clone https://github.com/flutter/flutter.git
           source $HOME/.bash_profile
           export PATH="$PATH:`pwd`/flutter/bin"
           echo $PATH
