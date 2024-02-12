@@ -44,9 +44,9 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
-      - name: Create submodules
+      - name: Go to submodules
         working-directory: store_management
-        run: mkdir submodules && cd submodules
+        run: cd submodules
 
       - name: clone submodules
         working-directory: store_management
