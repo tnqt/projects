@@ -45,13 +45,13 @@ dependencies:
 
   # Custom plugin
   shared_module:
-    path: submodules/shared_module
+    path: sub_module/shared_module
   home:
-    path: submodules/home
+    path: sub_module/home
   firebase_storage_api:
-    path: submodules/data_layer/firebase_storage_api
+    path: sub_module/data_layer/firebase_storage_api
   local_storage_api:
-    path: submodules/data_layer/local_storage_api
+    path: sub_module/data_layer/local_storage_api
   go_router: ^13.0.1
   equatable: ^2.0.5
   firebase_auth: ^4.16.0
@@ -65,6 +65,7 @@ dependencies:
   bloc_test: ^9.1.5
   mocktail: ^1.0.3
   mockingjay: ^0.4.0
+  badges: ^3.1.2
 
 dev_dependencies:
   flutter_test:
