@@ -44,6 +44,10 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
+      - name: Configure Git
+        working-directory: store_management
+        run: git config --global user.name TN && git config --global user.email nxthao0701@gmail.com
+
       - name: Go to submodules
         working-directory: store_management
         run: cd submodules
