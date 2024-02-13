@@ -54,11 +54,11 @@ jobs:
 
       - name: clone submodules
         working-directory: store_management
-        run: git clone --recursive https://github.com/tnqt/sub_module.git && cd .. && ls
+        run: git clone --recursive https://github.com/tnqt/sub_module.git && cd data_layer && ls
         
       - name: Install dependencies
         working-directory: store_management
-        run: flutter pub get
+        run: pwd && ls && flutter pub get
   
       - name: Save state
         run: echo "{name}={value}" >> $GITHUB_STATE
