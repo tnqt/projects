@@ -54,7 +54,7 @@ jobs:
 
       - name: clone submodules
         working-directory: store_management
-        run: git clone --recursive https://github.com/tnqt/sub_module.git && cd data_layer && ls
+        run: git clone --recursive https://github.com/tnqt/sub_module.git && cd sub_module && cd data_layer && ls
         
       - name: Install dependencies
         working-directory: store_management
