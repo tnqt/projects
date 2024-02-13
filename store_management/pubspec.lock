@@ -388,7 +388,7 @@ packages:
   firebase_storage_api:
     dependency: "direct main"
     description:
-      path: "submodules/data_layer/firebase_storage_api"
+      path: "sub_modules/data_layer/firebase_storage_api"
       relative: true
     source: path
     version: "0.0.1"
@@ -551,7 +551,7 @@ packages:
   home:
     dependency: "direct main"
     description:
-      path: "submodules/home"
+      path: "sub_modules/home"
       relative: true
     source: path
     version: "0.0.1"
@@ -630,7 +630,7 @@ packages:
   local_storage_api:
     dependency: "direct main"
     description:
-      path: "submodules/data_layer/local_storage_api"
+      path: "sub_modules/data_layer/local_storage_api"
       relative: true
     source: path
     version: "0.0.1"
@@ -813,7 +813,7 @@ packages:
   shared_module:
     dependency: "direct main"
     description:
-      path: "submodules/shared_module"
+      path: "sub_modules/shared_module"
       relative: true
     source: path
     version: "0.0.1"
