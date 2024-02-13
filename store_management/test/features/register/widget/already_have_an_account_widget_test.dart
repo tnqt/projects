@@ -5,12 +5,13 @@ import 'package:store_management/store_management.dart';
 
 import '../../../helpers/pump_app.dart';
 
-
 void main() {
   late MockNavigator mockNavigator;
 
   setUp(() {
     mockNavigator = MockNavigator();
+    when(mockNavigator.canPop).thenReturn(true);
+    when(() => mockNavigator.push<void>(any())).thenAnswer((_) async {});
   });
 
   group('AlreadyHaveAnAccountWidget', () {
