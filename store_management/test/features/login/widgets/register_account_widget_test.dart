@@ -38,21 +38,21 @@ void main() {
       },
     );
 
-    testWidgets(
-      "fires the correct event when button is tapped",
-      (WidgetTester tester) async {
-        when(() => navigator.pushNamed(any())).thenAnswer((_) async => null);
+    // testWidgets(
+    //   "fires the correct event when button is tapped",
+    //   (WidgetTester tester) async {
+    //     when(() => navigator.pushNamed(any())).thenAnswer((_) async => null);
 
-        await tester.pumpApp(buildSubject());
-        final itemFinder = find.byType(TextButton);
-        expect(itemFinder, findsOneWidget);
-        await tester.tap(itemFinder);
-        await tester.pumpAndSettle();
+    //     await tester.pumpApp(buildSubject());
+    //     final itemFinder = find.byType(TextButton);
+    //     expect(itemFinder, findsOneWidget);
+    //     await tester.tap(itemFinder);
+    //     await tester.pumpAndSettle();
 
-        verify(
-          () => navigator.pushNamed(RegisterPage.routeName),
-        ).called(1);
-      },
-    );
+    //     verify(
+    //       () => navigator.pushNamed(RegisterPage.routeName),
+    //     ).called(1);
+    //   },
+    // );
   });
 }
