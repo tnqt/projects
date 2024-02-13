@@ -44,17 +44,9 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
-      - name: Configure Git
+      - name: clone sub_modules
         working-directory: store_management
-        run: git config --global user.name TN && git config --global user.email nxthao0701@gmail.com
-
-      - name: Go to submodules
-        working-directory: store_management
-        run: cd submodules
-
-      - name: clone submodules
-        working-directory: store_management
-        run: git clone --recursive https://github.com/tnqt/sub_module.git && ls && cd submodules && cd data_layer && ls
+        run: git clone --recursive https://github.com/tnqt/sub_module.git && ls && cd sub_modules && cd data_layer && ls
         
       - name: Install dependencies
         working-directory: store_management
