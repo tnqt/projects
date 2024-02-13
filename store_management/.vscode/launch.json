@@ -1,0 +1,90 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "TNSM development",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "development",
+                "-t",
+                "lib/main.dart"
+            ]
+        },
+        {
+            "name": "TNSM staging",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "staging",
+                "-t",
+                "lib/main.dart"
+            ]
+        },
+        {
+            "name": "TNSM production",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "production",
+                "-t",
+                "lib/main.dart"
+            ]
+        },
+        {
+            "name": "TNSM profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "TNSM profiling development",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "args": [
+                "-t",
+                "lib/main.dart",
+                "--flavor",
+                "development",
+                "--cache-sksl",
+            ]
+        },
+        {
+            "name": "TNSM profiling Staging",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "args": [
+                "-t",
+                "lib/main.dart",
+                "--flavor",
+                "staging",
+            ]
+        },
+        {
+            "name": "TNSM profiling Production",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "args": [
+                "-t",
+                "lib/main.dart",
+                "--flavor",
+                "production",
+            ]
+        }
+    ]
+}
