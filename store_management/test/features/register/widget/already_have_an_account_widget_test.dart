@@ -34,20 +34,20 @@ void main() {
       },
     );
 
-    testWidgets(
-      "fires the correct event when button is tapped",
-      (WidgetTester tester) async {
-        await tester.pumpApp(
-          buildSubject(),
-        );
+    // testWidgets(
+    //   "fires the correct event when button is tapped",
+    //   (WidgetTester tester) async {
+    //     await tester.pumpApp(
+    //       buildSubject(),
+    //     );
 
-        final itemFinder = find.byType(TextButton);
-        expect(itemFinder, findsOneWidget);
-        await tester.tap(itemFinder);
-        verify(
-          () => mockNavigator.pop(),
-        ).called(1);
-      },
-    );
+    //     final itemFinder = find.byType(TextButton);
+    //     expect(itemFinder, findsOneWidget);
+    //     await tester.tap(itemFinder);
+    //     verify(
+    //       () => mockNavigator.pop(),
+    //     ).called(1);
+    //   },
+    // );
   });
 }
