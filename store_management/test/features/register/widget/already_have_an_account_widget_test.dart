@@ -6,20 +6,21 @@ import 'package:store_management/store_management.dart';
 import '../../../helpers/pump_app.dart';
 
 void main() {
-  late MockNavigator mockNavigator;
+  // late MockNavigator mockNavigator;
 
-  setUp(() {
-    mockNavigator = MockNavigator();
-    when(mockNavigator.canPop).thenReturn(true);
-    when(() => mockNavigator.push<void>(any())).thenAnswer((_) async {});
-  });
+  // setUp(() {
+  //   mockNavigator = MockNavigator();
+  //   when(mockNavigator.canPop).thenReturn(true);
+  //   when(() => mockNavigator.push<void>(any())).thenAnswer((_) async {});
+  // });
 
   group('AlreadyHaveAnAccountWidget', () {
     Widget buildSubject() {
-      return MockNavigatorProvider(
-        navigator: mockNavigator,
-        child: const AlreadyHaveAnAccountWidget(),
-      );
+      // return MockNavigatorProvider(
+      //   navigator: mockNavigator,
+      //   child: const AlreadyHaveAnAccountWidget(),
+      // );
+      return const AlreadyHaveAnAccountWidget();
     }
 
     testWidgets(
