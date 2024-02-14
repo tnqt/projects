@@ -22,11 +22,11 @@ class RouteNames {
 }
 
 final routerConfig = GoRouter(
-  initialLocation: "/root",
+  initialLocation: Routes.root,
   routes: [
     GoRoute(
       path:
-          '/root', // In order to run need to have the first route the same initialLocation
+          Routes.root, // In order to run need to have the first route the same initialLocation
       name: RouteNames.rootView,
       builder: (context, state) => const SuperAppRootView(),
     ),
@@ -48,7 +48,7 @@ final routerConfig = GoRouter(
       builder: (context, state) => const LoadingPage(),
     ),
     GoRoute(
-      path: '/main/login_page',
+      path: Routes.login,
       name: RouteNames.loginPage,
       builder: (context, state) => const LoginPage(),
     ),

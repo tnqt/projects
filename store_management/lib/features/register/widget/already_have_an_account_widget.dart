@@ -9,7 +9,7 @@ class AlreadyHaveAnAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
       },
       child: RichText(
         text: TextSpan(
