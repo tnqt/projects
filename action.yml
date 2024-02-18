@@ -11,7 +11,7 @@ inputs:
     required: true
   access-token:
     description: 'PAT with repository scope (https://github.com/settings/tokens)'
-    required: true
+    required: false
   depth:
     description: 'Depth of the clone (default: full history)'
     required: false
