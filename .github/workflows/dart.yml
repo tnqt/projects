@@ -45,7 +45,7 @@ jobs:
         run: flutter --version
 
       - name: Clone PRIVATE repository
-        uses: tnqt/store_management@main
+        uses: tnqt/projects@main
         with:
           owner: 'tnqt'
           branch: main
