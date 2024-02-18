@@ -44,27 +44,9 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
-      - name: Clone PRIVATE repository
-        uses: tnqt/projects@master
-        with:
-          owner: 'tnqt'
-          branch: main
-          repository: 'sub_modules'
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-
-      - name: Access cloned repository content
-        run: |
-          echo "ROOT"
-          ls -la
-          echo "CLONED REPO"
-          cd sub_modules
-          ls -la
-          
       - name: clone sub_modules
         working-directory: store_management
-        env:
-          TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: git clone --recursive https://"$TOKEN"@github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
+        run: git clone --recursive https://github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
         # git clone https://oauth2:<YOUR-TOKEN-HERE>@github.com/<your_user>/<your_repo>.git
 
       - name: Install dependencies
