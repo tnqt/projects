@@ -24,7 +24,7 @@ jobs:
           owner: 'tnqt'
           branch: main
           repository: 'sub_modules'
-          access-token: ${{ secrets.sub_module }}
+          access-token: ${{ secrets.MY_APP_PRIVATE_KEY }}
       
       - name: Access cloned repository content
         run: |
