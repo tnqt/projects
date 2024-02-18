@@ -65,8 +65,8 @@ jobs:
       - name: print token
         run: echo ${{ secrets.TOKEN_2 }}
               
-      # - name: print app token
-      #   run: echo ${{ secrets.MY_APP_PRIVATE_KEY }}
+      - name: print app token
+        run: echo ${{ secrets.TOKEN_22 }}
         
       - name: clone sub_modules
         working-directory: store_management
