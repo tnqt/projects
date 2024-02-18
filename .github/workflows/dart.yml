@@ -62,15 +62,15 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
-      - name: print token
-        run: echo ${{ secrets.USER_TOKEN }}
+      # - name: print token
+      #   run: echo ${{ secrets.USER_TOKEN }}
               
-      - name: print app token
-        run: echo ${{ secrets.MY_APP_PRIVATE_KEY }}
+      # - name: print app token
+      #   run: echo ${{ secrets.MY_APP_PRIVATE_KEY }}
         
       - name: clone sub_modules
         working-directory: store_management
-        run: git clone --recursive https://${{ secrets.USER_TOKEN }}:x-oauth-basic@github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
+        run: git clone --recursive https://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:x-oauth-basic@github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
         # git clone https://oauth2:<YOUR-TOKEN-HERE>@github.com/<your_user>/<your_repo>.git
 
       - name: Install dependencies
