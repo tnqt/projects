@@ -13,28 +13,28 @@ on:
 
 jobs:
   build:
-    # runs-on: macos-latest
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
+    # runs-on: ubuntu-latest
 
     steps:
 
-      - name: Clone PRIVATE repository
-        uses: tnqt/projects@master
-        with:
-          owner: 'tnqt'
-          branch: main
-          repository: 'sub_modules'
-          access-token: ${{ secrets.ACCESS_TOKEN }}
+      # - name: Clone PRIVATE repository
+      #   uses: tnqt/projects@master
+      #   with:
+      #     owner: 'tnqt'
+      #     branch: main
+      #     repository: 'sub_modules'
+      #     access-token: ${{ secrets.ACCESS_TOKEN }}
       
-      - name: Access cloned repository content
-        run: |
-          echo "ROOT"
-          ls -la
-          echo "CLONED REPO"
-          cd formulas-training
-          ls -la
+      # - name: Access cloned repository content
+      #   run: |
+      #     echo "ROOT"
+      #     ls -la
+      #     echo "CLONED REPO"
+      #     cd formulas-training
+      #     ls -la
 
-              # - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         
       - name: Install Flutter
         run: |
@@ -62,9 +62,9 @@ jobs:
         working-directory: store_management
         run: flutter --version
         
-      # - name: clone sub_modules
-        # working-directory: store_management
-        # run: git clone --recursive https://github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
+      - name: clone sub_modules
+        working-directory: store_management
+        run: git clone --recursive https://${{secrets.feb_18}}:x-oauth-basic@github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
         # git clone https://oauth2:<YOUR-TOKEN-HERE>@github.com/<your_user>/<your_repo>.git
 
       - name: Install dependencies
