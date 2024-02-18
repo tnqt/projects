@@ -16,7 +16,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
         
       - name: Install Flutter
         run: |
@@ -44,21 +44,21 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
-      # - name: Clone PRIVATE repository
-      #   uses: tnqt/projects@master
-      #   with:
-      #     owner: 'tnqt'
-      #     branch: main
-      #     repository: 'sub_modules'
-      #     access-token: ${{ secrets.ACCESS_TOKEN }}
+      - name: Clone PRIVATE repository
+        uses: tnqt/projects@master
+        with:
+          owner: 'tnqt'
+          branch: main
+          repository: 'sub_modules'
+          access-token: ${{ secrets.sub_module }}
       
-      # - name: Access cloned repository content
-      #   run: |
-      #     echo "ROOT"
-      #     ls -la
-      #     echo "CLONED REPO"
-      #     cd formulas-training
-      #     ls -la
+      - name: Access cloned repository content
+        run: |
+          echo "ROOT"
+          ls -la
+          echo "CLONED REPO"
+          cd formulas-training
+          ls -la
           
       - name: clone sub_modules
         working-directory: store_management
