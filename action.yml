@@ -22,7 +22,7 @@ inputs:
     default: "main" 
   submodule:
     description: 'Clone with submodules'
-    required: false
+    required: true
     default: "false" 
 
 runs:
