@@ -62,8 +62,8 @@ jobs:
         working-directory: store_management
         run: flutter --version
 
-      # - name: print token
-      #   run: echo ${{ secrets.USER_TOKEN }}
+      - name: print token
+        run: echo ${{ secrets.TOKEN_2 }}
               
       # - name: print app token
       #   run: echo ${{ secrets.MY_APP_PRIVATE_KEY }}
