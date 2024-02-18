@@ -62,7 +62,7 @@ jobs:
           
       - name: clone sub_modules
         working-directory: store_management
-        run: git clone --recursive https://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@github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
+        run: git clone --recursive https://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@github.com/tnqt/sub_modules.git && ls && cd sub_modules && cd data_layer && ls
         # git clone https://oauth2:<YOUR-TOKEN-HERE>@github.com/<your_user>/<your_repo>.git
 
       - name: Install dependencies
