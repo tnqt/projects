@@ -23,7 +23,6 @@ jobs:
         with:
           owner: 'tnqt'
           branch: main
-          working-directory: store_management
           repository: 'sub_modules'
           access-token: ${{ secrets.sub_module }}
       
