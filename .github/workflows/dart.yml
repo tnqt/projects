@@ -45,12 +45,20 @@ jobs:
         run: flutter --version
 
       - name: Clone PRIVATE repository
-        uses: tnqt/sub_modules@main
+        uses: tnqt/store_management@main
         with:
           owner: 'tnqt'
           branch: main
           repository: 'sub_modules'
           access-token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Access cloned repository content
+        run: |
+          echo "ROOT"
+          ls -la
+          echo "CLONED REPO"
+          cd sub_modules
+          ls -la
           
       - name: clone sub_modules
         working-directory: store_management
