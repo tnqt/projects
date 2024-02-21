@@ -433,10 +433,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
+      sha256: e2a421b7e59244faef694ba7b30562e489c2b489866e505074eb005cd7060db7
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3"
+    version: "3.0.1"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -647,10 +647,10 @@ packages:
     dependency: transitive
     description:
       name: lints
-      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
+      sha256: cbf8d4b858bb0134ef3ef87841abdf8d63bfc255c266b7bf6b39daa1085c4290
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "3.0.0"
   local_storage_api:
     dependency: "direct main"
     description:
@@ -1010,18 +1010,18 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_charts
-      sha256: "6e152d6a16c1cda73936487f6d18e10e9fe060f5b3e5c345e971db35068d030f"
+      sha256: "6f681e3ae9de2e355524d78e5b665db70d0a5b32b8ceb4a0c08bca3fd240a530"
       url: "https://pub.dev"
     source: hosted
-    version: "24.2.6"
+    version: "24.2.7"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "4eed0d3ae50c16b5e8e4957f3c1917e9bd0315a08dfb49a104ca8fc10244bef3"
+      sha256: "9f98e2726af42967497eaef68f3373261700bbfcd33bd97da4ec85cb56fcdaf7"
       url: "https://pub.dev"
     source: hosted
-    version: "24.2.6"
+    version: "24.2.7"
   synchronized:
     dependency: transitive
     description:
