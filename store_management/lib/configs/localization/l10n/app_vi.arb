@@ -12,5 +12,10 @@
   "create_an_account": "Tạo Một Tài Khoản",
   "register_msg": "Đăng ký với địa chỉ email hoạt động của bạn và \n mật khẩu mới hoặc đăng nhập tài khoản của bạn",
   "already_have_an_account": "Đã có tài khoản? ",
-  "prepare_the_resource": "Chuẩn bị nguồn tài nguyên"
+  "prepare_the_resource": "Chuẩn bị nguồn tài nguyên",
+  "homePage": "Trang chủ",
+  "order": "Đơn hàng",
+  "product": "Sản phẩm",
+  "report": "Báo cáo",
+  "others": "Khác"
 }

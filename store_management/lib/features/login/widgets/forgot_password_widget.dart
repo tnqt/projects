@@ -4,7 +4,7 @@ import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class ForgotPasswordWidget extends StatelessWidget {
-  const ForgotPasswordWidget({Key? key}) : super(key: key);
+  const ForgotPasswordWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

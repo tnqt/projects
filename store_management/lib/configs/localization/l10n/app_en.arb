@@ -12,5 +12,10 @@
   "create_an_account": "Create An Account",
   "register_msg": "Register with your own active email and new \n password or login your account",
   "already_have_an_account": "Already have an account? ",
-  "prepare_the_resource": "Prepare the resource"
+  "prepare_the_resource": "Prepare the resource",
+  "homePage": "Home Page",
+  "order": "Order",
+  "product": "Product",
+  "report": "Report",
+  "others": "Others"
 }

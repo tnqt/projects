@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:store_management/store_management.dart';
 
 class LoadingPage extends StatelessWidget {
-  const LoadingPage({Key? key}) : super(key: key);
+  const LoadingPage({super.key});
 
   static const routeName = "/loading";
 
@@ -22,7 +22,7 @@ class LoadingPage extends StatelessWidget {
 
 @visibleForTesting
 class WaitingResourceScreen extends StatelessWidget {
-  const WaitingResourceScreen({Key? key}) : super(key: key);
+  const WaitingResourceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

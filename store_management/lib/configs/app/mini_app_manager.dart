@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home/home.dart';
+import 'package:product/product.dart';
 import 'package:shared_module/shared_module.dart';
 
 List<MiniApp> miniApps = [
   SharedModuleApp(),
-  HomeApp()
+  HomeApp(),
+  ProductApp()
   // BookingApp(),
   // EcommerceApp(),
   // FoodApp(),

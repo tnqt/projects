@@ -3,7 +3,7 @@ import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class RegisterAccountWidget extends StatelessWidget {
-  const RegisterAccountWidget({Key? key}) : super(key: key);
+  const RegisterAccountWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

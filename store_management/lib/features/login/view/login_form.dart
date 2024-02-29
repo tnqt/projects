@@ -5,7 +5,7 @@ import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key}) : super(key: key);
+  const LoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class LoginForm extends StatelessWidget {
 
 @visibleForTesting
 class AppLogoWidget extends StatelessWidget {
-  const AppLogoWidget({Key? key}) : super(key: key);
+  const AppLogoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +107,7 @@ class AppLogoWidget extends StatelessWidget {
 
 @visibleForTesting
 class LoginInstructionWidget extends StatelessWidget {
-  const LoginInstructionWidget({Key? key}) : super(key: key);
+  const LoginInstructionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
