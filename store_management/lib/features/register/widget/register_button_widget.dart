@@ -4,7 +4,7 @@ import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class RegisterButtonWidget extends StatelessWidget {
-  const RegisterButtonWidget({Key? key}) : super(key: key);
+  const RegisterButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

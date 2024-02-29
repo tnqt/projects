@@ -53,10 +53,10 @@ packages:
     dependency: "direct main"
     description:
       name: bdd_widget_test
-      sha256: f34a686133787087502b1c78ddc82c2f407084128fa2bc1cde7bc2b79906d591
+      sha256: "2b37964a52c9abf6e618d94dd22e09c7410573a281d799f2a0006fc408d63f49"
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "1.7.0"
   bloc:
     dependency: transitive
     description:
@@ -242,13 +242,13 @@ packages:
     source: hosted
     version: "0.4.1"
   dio:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dio
-      sha256: "797e1e341c3dd2f69f2dad42564a6feff3bfb87187d05abb93b9609e6f1645c3"
+      sha256: "49af28382aefc53562459104f64d16b9dfd1e8ef68c862d5af436cc8356ce5a8"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.0"
+    version: "5.4.1"
   equatable:
     dependency: "direct main"
     description:
@@ -810,6 +810,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  product:
+    dependency: "direct main"
+    description:
+      path: "sub_modules/product"
+      relative: true
+    source: path
+    version: "0.0.1"
   provider:
     dependency: transitive
     description:
@@ -1143,5 +1150,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.2.0-0 <4.0.0"
+  dart: ">=3.3.0 <4.0.0"
   flutter: ">=3.13.0"

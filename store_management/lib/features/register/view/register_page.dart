@@ -6,7 +6,7 @@ import 'package:store_management/store_management.dart';
 class RegisterPage extends StatelessWidget {
   static const routeName = 'login/register_page';
 
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class RegisterPage extends StatelessWidget {
 }
 
 class RegisterBodyPage extends StatelessWidget {
-  const RegisterBodyPage({Key? key}) : super(key: key);
+  const RegisterBodyPage({super.key});
 
   @override
   Widget build(BuildContext context) {

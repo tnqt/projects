@@ -6,7 +6,7 @@ import 'package:store_management/store_management.dart';
 class LoginPage extends StatelessWidget {
   static const routeName = '/login/login_page';
 
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {

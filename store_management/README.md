@@ -24,3 +24,6 @@ flutter run --flavor development -t lib/main_development.dart
 - Analyze and apply the dart fix:
     flutter analyze
     dart fix --apply
+
+- Generate bdd testing:
+    flutter packages pub run build_runner watch --delete-conflicting-outputs

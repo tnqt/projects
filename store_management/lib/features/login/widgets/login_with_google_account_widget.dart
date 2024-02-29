@@ -4,7 +4,7 @@ import 'package:shared_module/shared_module.dart';
 import 'package:store_management/store_management.dart';
 
 class LoginWithGoogleAccountWidget extends StatelessWidget {
-  const LoginWithGoogleAccountWidget({Key? key}) : super(key: key);
+  const LoginWithGoogleAccountWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

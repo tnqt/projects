@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_module/shared_module.dart';
 import 'package:store_management/store_management.dart';
 
 class RouteNames {
@@ -9,16 +10,17 @@ class RouteNames {
   static const splash = "splashScreen";
   static const loadingPage = "loadingPage";
   static const loginPage = "loginPage";
-  static const myRestaurant = "myRestaurant";
-  static const managementPage = "pageOrderManagement";
-  static const reservationManagementPage = "reservationManagementPage";
-  static const reservationForm = "reservationForm";
-  static const successReservationForm = "successReservationForm";
-  static const searchForLocationPage = "searchForLocationPage";
-  static const searchForLocationMapPage = "searchForLocationMapPage";
-  static const purchaseVoucher = "purchaseVoucher";
-  static const mealsCatPage = "mealsCatPage";
-  static const transactionVoucher = "transactionVoucher";
+  static const superAppPage = "superAppPage";
+  // static const myRestaurant = "myRestaurant";
+  // static const managementPage = "pageOrderManagement";
+  // static const reservationManagementPage = "reservationManagementPage";
+  // static const reservationForm = "reservationForm";
+  // static const successReservationForm = "successReservationForm";
+  // static const searchForLocationPage = "searchForLocationPage";
+  // static const searchForLocationMapPage = "searchForLocationMapPage";
+  // static const purchaseVoucher = "purchaseVoucher";
+  // static const mealsCatPage = "mealsCatPage";
+  // static const transactionVoucher = "transactionVoucher";
 }
 
 final routerConfig = GoRouter(
@@ -46,6 +48,11 @@ final routerConfig = GoRouter(
       path: '/loading',
       name: RouteNames.loadingPage,
       builder: (context, state) => const LoadingPage(),
+    ),
+    GoRoute(
+      path: '/superAppPage',
+      name: RouteNames.superAppPage,
+      builder: (context, state) => const SuperAppPage(),
     ),
     GoRoute(
       path: Routes.login,

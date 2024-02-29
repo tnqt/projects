@@ -2,6 +2,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_module/shared_module.dart';
 import 'package:store_management/bootstrap.dart';
 import 'package:store_management/firebase_options.dart';
 import 'package:store_management/store_management.dart';
@@ -12,7 +13,12 @@ Future<void> main() async {
 
   await _firebaseConfiguration();
 
-  final appConfig = await configureAppWithFlavor();
+  AppConfig appConfig = await configureAppWithFlavor();
+
+  // Load tenant config 
+  TenantService.loadTenantConfig();
+  TenantConfigModel tenantConfigModel = TenantService.instance.defaultTheme;
+  appConfig.tenantConfigModel = tenantConfigModel;
 
   bootstrap(appConfig: appConfig);
 }

@@ -10,13 +10,13 @@ import 'package:store_management/store_management.dart';
 /// StoreManagementAppView widgets later on.
 class StoreManagementApp extends StatelessWidget {
   const StoreManagementApp({
-    Key? key,
+    super.key,
     required this.authenticationRepository,
     required this.userRepository,
     required this.callback,
     required this.storageRepository,
     required this.locale,
-  }) : super(key: key);
+  });
 
   final shared_module.AuthenticationRepository authenticationRepository;
   final shared_module.UserRepository userRepository;
@@ -55,10 +55,10 @@ class StoreManagementApp extends StatelessWidget {
 
 class StoreManagementAppView extends StatefulWidget {
   const StoreManagementAppView({
-    Key? key,
+    super.key,
     required this.callback,
     required this.locale,
-  }) : super(key: key);
+  });
 
   final VoidCallback callback;
   final Locale locale;

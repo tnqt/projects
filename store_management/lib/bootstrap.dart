@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_storage_api/local_storage_api.dart';
@@ -26,6 +27,8 @@ void bootstrap({required AppConfig appConfig}) async {
     firebaseStorageApi: appConfig.firebaseStorageApi,
   );
 
+  registerAppDelegates(appConfig);
+
   runApp(StoreManagementApp(
     userRepository: UserRepository(),
     authenticationRepository: AuthenticationRepository(),
@@ -35,4 +38,24 @@ void bootstrap({required AppConfig appConfig}) async {
       await localDatabase.close();
     },
   ));
+}
+
+
+AppDelegates registerAppDelegates(AppConfig appConfig) {
+  final dio = configureNewDio(appConfig);
+  final appDelegates = SuperAppDelegates(appConfig, dio);
+  MiniAppManager.registerAppDelegates(appDelegates);
+  return appDelegates;
+}
+
+Dio configureNewDio(AppConfig appConfig) {
+  Dio dio = Dio();
+  dio.options.baseUrl = appConfig.apiBaseUrl;
+  dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
+    if (!options.headers.containsKey('content-type')) {
+      options.headers['content-type'] = 'application/json';
+    }
+    return handler.next(options);
+  }));
+  return dio;
 }

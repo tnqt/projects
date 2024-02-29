@@ -48,6 +48,8 @@ dependencies:
     path: sub_modules/shared_module
   home:
     path: sub_modules/home
+  product:
+    path: sub_modules/product
   firebase_storage_api:
     path: sub_modules/data_layer/firebase_storage_api
   local_storage_api:
@@ -66,6 +68,7 @@ dependencies:
   mocktail: ^1.0.3
   mockingjay: ^0.4.0
   badges: ^3.1.2
+  dio: ^5.4.1
 
 dev_dependencies:
   flutter_test:

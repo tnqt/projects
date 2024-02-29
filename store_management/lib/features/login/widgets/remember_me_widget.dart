@@ -4,7 +4,7 @@ import 'package:shared_module/shared_module.dart' as shared_module;
 import 'package:store_management/store_management.dart';
 
 class RememberMeWidget extends StatefulWidget {
-  const RememberMeWidget({Key? key}) : super(key: key);
+  const RememberMeWidget({super.key});
 
   @override
   State<StatefulWidget> createState() => RememberMeWidgetState();

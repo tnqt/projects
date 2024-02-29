@@ -1,0 +1,1 @@
+export 'navigation_tab_model.dart';
