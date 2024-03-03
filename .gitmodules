@@ -1,3 +1,3 @@
-[submodule "store_management/submodules"]
-	path = store_management/submodules
-	url = https://github.com/tnqt/sub_module.git
+[submodule "store_management/sub_modules"]
+	path = store_management/sub_modules
+	url = https://github.com/tnqt/sub_modules.git
