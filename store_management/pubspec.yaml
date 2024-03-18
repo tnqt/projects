@@ -39,7 +39,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
-  intl_translation: ^0.18.2
+  intl_translation: any
   firebase_core: ^2.24.2
   firebase_analytics: ^10.8.0
 
