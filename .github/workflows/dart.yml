@@ -69,9 +69,13 @@ jobs:
         working-directory: store_management
         run: flutter test
         
-      - name: Run tests
+      - name: Run unit tests for home module
         working-directory: store_management
         run: cd sub_modules/home && flutter test
+
+      - name: Run unit tests for product module
+        working-directory: store_management
+        run: cd sub_modules/product && flutter test
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
